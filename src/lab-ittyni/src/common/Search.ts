@@ -1,15 +1,23 @@
+import { device } from "../../../theme";
 import styled from "../../../theme/styled-components";
 
+export const SearchContainer = styled('div')<{show? : boolean}>`
+  display : flex;
+  position : relative;
+  ${device.mobile`
+    display : ${({show} : any)=>show ? 'block' : 'none'}
+  `}
+`
 export const SearchIcon = styled.i`
-left: auto;
-right: 15px;
-float: right;
-position: absolute;
-margin: 7px 2px 4px 10px;
-z-index: 3;
-width: 16px;
-font-size: 25px;
-text-align: center;
+  left: auto;
+  right: 15px;
+  float: right;
+  position: absolute;
+  margin: 7px 2px 4px 10px;
+  z-index: 3;
+  width: 16px;
+  font-size: 25px;
+  text-align: center;
 `;
 export const SearchInput = styled.input`
   padding-right: 33px;

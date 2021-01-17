@@ -145,12 +145,36 @@ function* LabTestFilterByEnName({path, payload}: AnyAction){
         LabTestActions.LAB_TESTS_FILTER_BY_EN_NAME_SUCCESS
     )
 }
+/**
+ * filter by name saga
+ */
+function* LabTestfetchTwentyTests({path, payload}: AnyAction){
+    yield tryFetching(
+        path, 
+        payload,
+        LabTestActions.LAB_TESTS_FR_FETCH_TWENTY_ERROR,
+        LabTestActions.LAB_TESTS_FR_FETCH_TWENTY_SUCCESS
+    )
+}
+/**
+ * filter by name saga
+ */
+function* LabTestsFrSearchByName({path, payload}: AnyAction){
+    yield tryFetching(
+        path, 
+        payload,
+        LabTestActions.LAB_TESTS_FR_SEARCH_BY_Name_ERROR,
+        LabTestActions.LAB_TESTS_FR_SEARCH_BY_Name_SUCCESS
+    )
+}
 //watcher func dispatcher
 function* watchLabTest(){
 
     // fetch tests form server 
     yield takeEvery(LabTestActions.LAB_TESTS_FR_FETCH, LabTestFrListFetch)
+    yield takeEvery(LabTestActions.LAB_TESTS_FR_FETCH_TWENTY, LabTestfetchTwentyTests)
     yield takeEvery(LabTestActions.LAB_TESTS_FR_SEARCH, LabTestsFrSearch)
+    yield takeEvery(LabTestActions.LAB_TESTS_FR_SEARCH_BY_Name, LabTestsFrSearchByName)
     yield takeEvery(LabTestActions.LAB_TESTS_EN_FETCH, LabTestsFetchAll)
     yield takeEvery(LabTestActions.LAB_TESTS_EN_FETCH_DETAILS, LabTestEnFetchDetails)
     yield takeEvery(LabTestActions.LAB_TESTS_FR_FETCH_DETAILS, LabTestFrFetchDetails)

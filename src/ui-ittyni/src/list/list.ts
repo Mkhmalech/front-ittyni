@@ -8,6 +8,7 @@ export const Container = styled('ul')<{itemscope? : boolean, itemtype? : string}
 `
 export const Item = styled.li`
     display: flex;
+    flex-wrap : wrap;
     background-color: #ffffff;
     margin: 10px;
     padding: 5px;

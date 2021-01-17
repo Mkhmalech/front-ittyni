@@ -16,11 +16,10 @@ export const labRoutes = {
   LabTests: {
     labTests: {
       path: "/website/:category/Listes-prix-analyses-medicales/maroc",
-      component: LabTestsListing,
-      search: LabTestSearch
+      component: LabTestsListing
     },
     labTestDetail: {
-      path: "/website/:category/:test",
+      path: "/website/actes-biologiques-et-tarifs/:testnamefr",
       component: LabTestDetail
     },
     admin: {
@@ -48,7 +47,7 @@ export const labRoutes = {
       component: LabosLisiting
     },
     LaboDetails: {
-      path: "/website/:category/:labo",
+      path: "/website/laboratoire-d-analyses-medicales/:labo",
       title: "",
       description: "",
       keywords: "",

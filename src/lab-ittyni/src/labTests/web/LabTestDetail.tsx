@@ -5,91 +5,102 @@ import { Labtests } from '../controller/labtests';
 import { Ico } from '../../../../react-icons-sc/src/ico';
 import { atom } from '../../icon/atom'
 import { Helmet } from 'react-helmet';
+import { useSelector } from 'react-redux';
 
 const labtest = new Labtests();
 
-export const LabTestDetail = ({ labTestFrDetails }: any) => {
+export const LabTestDetail: React.FC<any> = () => {
+    // get test information
+    const { labTestFrDetails } = useSelector(({ labState }: any) => labState.test);
+    // get mnemonic
+    const { test }: any = useParams();
+    // get location
+    const location = useLocation();
 
-    const { category, test } = useParams();
-
-    if (category === 'analyses-medicales' && test !== undefined) {
-        if (labTestFrDetails === undefined || labTestFrDetails === null || labTestFrDetails.name.fr !== test) {
-            labtest.labTestFrFetchDetails(test)
-            return <div>Loading....</div>
-        } else {
-            const {
-                name: { fr },
-                finance,
-                reference: { Mnemonic },
-                specimen: { nature, tubeColor, anticoagulant, numberoftube, volumemin }
-            } = labTestFrDetails
-            return (
-                <>
-                    <Helmet>
-                        <title>{labTestFrDetails.name.fr}</title>
-                        <meta name="description" content={`prix analyse ${labTestFrDetails.name.fr} aux maroc list `} />
-                        <meta name="keywords" content={`prix tarif analyse maroc ${labTestFrDetails.name.fr}`} />
-                    </Helmet>
-                    <Article.Container>
-                        <Article.Header>
-                            <Article.HeaderContainer>
-                                <Article.HeaderAvatar>
-                                    <Article.HeaderAvatarIcon>
-                                        <Ico
-                                            {...atom}
-                                            width="140"
-                                            height="140"
-                                        />
-                                    </Article.HeaderAvatarIcon>
-                                </Article.HeaderAvatar>
-                                <Article.HeaderAbstract>
-                                    <Article.HeaderTitle>{labTestFrDetails.name.fr}</Article.HeaderTitle>
-                                    <Article.HeaderSubTitle>{category ? category.split('-').join(' ') : ''}</Article.HeaderSubTitle>
-                                    <Article.HeaderMiddle>
-                                        {nature ? nature.map((nature: any) => (
-                                            <span key={nature}>
-                                                <span>{nature}</span>
-                                                <span> &nbsp;•&nbsp; </span>
-                                            </span>
-                                        ))
-                                            :
-                                            ''}
-                                    </Article.HeaderMiddle>
-                                    <Article.HeaderFoot>
-                                        <Article.HeaderFootAssurance>
-                                            {finance[0] ? <>
-                                                <p><Badge>
-                                                    Prix Total : {Math.floor(finance[0].Bcode * 1.34)} dhs
+    React.useEffect(() => {
+        labtest.labTestFrFetchDetails(test)
+    }, [])
+    return (<>
+        {labTestFrDetails && <>
+            <Helmet>
+                <title>{labTestFrDetails.name.fr}</title>
+                <meta name="description" content={`le prix d analyse ${labTestFrDetails.name.fr} au maroc et les remboressements des mutuelles cnops la cnss cmim`} />
+                <meta name="keywords" content={`prix tarif analyse maroc ${labTestFrDetails.name.fr}`} />
+                <script type="application/ld+json">
+                    {`{
+                        "@context": "https://schema.org/",
+                        "@type": "Product",
+                        "name": "${labTestFrDetails.name.fr}",
+                        "brand": {	
+                            "@type": "Brand",
+                            "name": "ANALYSE MEDICALE"
+                        },
+                        description : "le prix d analyse ${labTestFrDetails.name.fr} au maroc et les remboressements des mutuelles cnops la cnss cmim",
+                        "offers": {
+                            "@type": "Offer",
+                            "url": "https://ittyni.com/${location.pathname}",
+                            "priceCurrency": "MAD",
+                            "price": "${Math.floor(labTestFrDetails.finance[0].Bcode * 1.34)}",
+                            "availability": "https://schema.org/InStock"
+                        }
+                    }`}
+                </script>
+            </Helmet>
+            <Article.Container>
+                <Article.Header>
+                    <Article.HeaderContainer>
+                        <Article.HeaderAvatar>
+                            <Article.HeaderAvatarIcon>
+                                <Ico
+                                    {...atom}
+                                    width="140"
+                                    height="140"
+                                />
+                            </Article.HeaderAvatarIcon>
+                        </Article.HeaderAvatar>
+                        <Article.HeaderAbstract>
+                            <Article.HeaderTitle>{labTestFrDetails.name.fr}</Article.HeaderTitle>
+                            <Article.HeaderSubTitle>analyses medicales</Article.HeaderSubTitle>
+                            <Article.HeaderMiddle>
+                                {labTestFrDetails.specimen.nature ? labTestFrDetails.specimen.nature.map((nature: any) => (
+                                    <span key={nature}>
+                                        <span>{nature}</span>
+                                        <span> &nbsp;•&nbsp; </span>
+                                    </span>
+                                ))
+                                    :
+                                    ''}
+                            </Article.HeaderMiddle>
+                            <Article.HeaderFoot>
+                                <Article.HeaderFootAssurance>
+                                    {labTestFrDetails.finance[0] ? <>
+                                        <p><Badge>
+                                            Prix Total : {Math.floor(labTestFrDetails.finance[0].Bcode * 1.34)} dhs
                                             </Badge></p>
-                                                <p>
-                                                    <Badge bgcolor="#388e3c">
-                                                        CNSS : {Math.floor((finance[0].Bcode * 1.1) * 0.7)} dhs
+                                        <p>
+                                            <Badge bgcolor="#388e3c">
+                                                CNSS : {Math.floor((labTestFrDetails.finance[0].Bcode * 1.1) * 0.7)} dhs
                                                 </Badge>
-                                                    <Badge bgcolor="#d32f2f">
-                                                        Adherent : {Math.floor((finance[0].Bcode * 1.34) - ((finance[0].Bcode * 1.1) * 0.7))} dhs
+                                            <Badge bgcolor="#d32f2f">
+                                                Adherent : {Math.floor((labTestFrDetails.finance[0].Bcode * 1.34) - ((labTestFrDetails.finance[0].Bcode * 1.1) * 0.7))} dhs
                                                 </Badge>
-                                                </p>
-                                                <p><Badge bgcolor="#388e3c">
-                                                    CNOPS : {Math.floor((finance[0].Bcode * 1.1) * 0.8)} dhs
+                                        </p>
+                                        <p><Badge bgcolor="#388e3c">
+                                            CNOPS : {Math.floor((labTestFrDetails.finance[0].Bcode * 1.1) * 0.8)} dhs
                                                 </Badge><Badge bgcolor="#d32f2f">
-                                                        Adherent : {Math.floor((finance[0].Bcode * 1.34) - ((finance[0].Bcode * 1.1) * 0.8))} dhs
+                                                Adherent : {Math.floor((labTestFrDetails.finance[0].Bcode * 1.34) - ((labTestFrDetails.finance[0].Bcode * 1.1) * 0.8))} dhs
                                                 </Badge>
-                                                </p>
-                                            </> : ''}
-                                        </Article.HeaderFootAssurance>
-                                    </Article.HeaderFoot>
-                                </Article.HeaderAbstract>
-                            </Article.HeaderContainer>
-                        </Article.Header>
-
-                    </Article.Container>
-                </>
-            )
-
-        }
-    } else {
-        return (<></>)
-    }
+                                        </p>
+                                    </> : ''}
+                                </Article.HeaderFootAssurance>
+                            </Article.HeaderFoot>
+                        </Article.HeaderAbstract>
+                    </Article.HeaderContainer>
+                </Article.Header>
+            </Article.Container></>}
+        {!labTestFrDetails && <div>Loading ...</div>}
+    </>
+    )
 }
 
 interface ArticleDetailH1 {

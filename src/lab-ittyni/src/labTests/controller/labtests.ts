@@ -1,6 +1,14 @@
 import { LabTestActions } from "../store/actions";
 import { store } from "../../../../index";
 
+export const searchLabTests = (q:string)=>store.dispatch({
+  type: LabTestActions.LAB_TESTS_FR_SEARCH_BY_Name,
+      payload: {
+        query: `query{LabTestFrenchSearch(query:"${q}"){id name{fr} reference{Mnemonic}} }`
+      },
+      path: "tests"
+})
+
 export class Labtests {
   private token: string | null = localStorage.getItem("TTUID");
 
@@ -54,6 +62,14 @@ export class Labtests {
       },
       path: "tests"
     });
+  fetchTwentyTests = () =>
+    store.dispatch({
+      type: LabTestActions.LAB_TESTS_FR_FETCH_TWENTY,
+      payload: {
+        query: `query{fetchTwentyLabTests_fr{id name{fr}finance{Bcode}reference{Mnemonic}specimen{nature tubeColor anticoagulant numberoftube volumemin}}}`
+      },
+      path: "tests"
+    });
 
   labTestsSearch = (name: string) =>
     store.dispatch({
@@ -83,7 +99,7 @@ export class Labtests {
     store.dispatch({
       type: LabTestActions.LAB_TESTS_FR_FETCH_DETAILS,
       payload: {
-        query: `query{LabTestView_fr(name:"${name}"){id name{fr}reference{Mnemonic}finance{Bcode}specimen{nature tubeColor anticoagulant numberoftube volumemin}}}`
+        query: `query{LabTestFrViewByAbbr(abbr:"${name}"){id name{fr}reference{Mnemonic}finance{Bcode}specimen{nature tubeColor anticoagulant numberoftube volumemin}}}`
       },
       path: "tests"
     });

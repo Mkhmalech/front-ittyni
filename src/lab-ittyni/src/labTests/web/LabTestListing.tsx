@@ -16,7 +16,7 @@ const LabTestsListing : React.FC<ILabTestsListingProps> =  ({labtests}) => {
 
   let data : ListData[] = [];
 
-  if(labtests === undefined || labtests.length <= 0){ labtestClasse.labTestsFetching() } 
+  if(labtests === undefined || labtests.length <= 0){ labtestClasse.fetchTwentyTests() } 
   else {
     labtests.map((labtest) => {
       data.push({
@@ -41,6 +41,15 @@ const LabTestsListing : React.FC<ILabTestsListingProps> =  ({labtests}) => {
         <meta name="keywords" content="" />
       </Helmet>
       <ListComponent listTitle="prix des analyse aux maroc" data={data} />
+      <button 
+        onClick={e=> labtestClasse.labTestsFetching()}
+        style={{
+          width: "100%",
+          padding: "5px",
+          backgroundColor: "white",
+          marginBottom: "5px"
+        }}
+      >Afficher Tout</button>
     </>
   );
 }

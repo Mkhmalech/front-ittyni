@@ -1,3 +1,4 @@
+import { device } from "../../../theme";
 import styled from "../../../theme/styled-components";
 
 export const Container = styled('article')`
@@ -39,6 +40,9 @@ export const HeaderAvatar = styled('div')`
     flex-grow: 0;
     flex-shrink: 0;
     margin-right: 20px;
+    ${device.mobile`
+        display : none;
+    `}
 `
 
 export const HeaderAvatarIcon = styled('div')`

@@ -5,7 +5,14 @@ export enum LabTestActions {
 
   LAB_TESTS_FR_FETCH = "@@labtests/LAB_TESTS_FR_FETCH",
   LAB_TESTS_FR_FETCH_ERROR = "@@labtests/LAB_TESTS_FR_FETCH_ERROR",
-  LAB_TESTS_FR_FETCH_SUCCESS = "@@labtests/LAB_TESTS_FR_FETCH_SICCESS",
+  LAB_TESTS_FR_FETCH_SUCCESS = "@@labtests/LAB_TESTS_FR_FETCH_SUCCESS",
+  /**
+   * fetch twenty labTests
+   */
+
+  LAB_TESTS_FR_FETCH_TWENTY = "@@labtests/LAB_TESTS_FR_FETCH_TWENTY",
+  LAB_TESTS_FR_FETCH_TWENTY_ERROR = "@@labtests/LAB_TESTS_FR_FETCH_TWENTY_ERROR",
+  LAB_TESTS_FR_FETCH_TWENTY_SUCCESS = "@@labtests/LAB_TESTS_FR_FETCH_TWENTY_SUCCESS",
 
   /**
    * search Labtests
@@ -14,6 +21,13 @@ export enum LabTestActions {
   LAB_TESTS_FR_SEARCH = "@@labtests/LAB_TESTS_FR_SEARCH",
   LAB_TESTS_FR_SEARCH_ERROR = "@@labtests/LAB_TESTS_FR_SEARCH_ERROR",
   LAB_TESTS_FR_SEARCH_SUCCESS = "@@labtests/LAB_TESTS_FR_SEARCH_SUCCESS",
+  /**
+   * search Labtests
+   */
+
+  LAB_TESTS_FR_SEARCH_BY_Name = "@@labtests/LAB_TESTS_FR_SEARCH_BY_NAME",
+  LAB_TESTS_FR_SEARCH_BY_Name_ERROR = "@@labtests/LAB_TESTS_FR_SEARCH_BY_NAME_ERROR",
+  LAB_TESTS_FR_SEARCH_BY_Name_SUCCESS = "@@labtests/LAB_TESTS_FR_SEARCH_BY_NAME_SUCCESS",
 
   /**
    * fetch all labtests 

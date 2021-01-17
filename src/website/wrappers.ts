@@ -18,7 +18,6 @@ export const Header = styled('header').attrs({className : "headerWrapper"})`
     width: 100%;
     z-index: 11;
     border-bottom: 1px solid #d4d4d4;
-    display: flex;
     * {
         background-color: ${({theme})=>theme.color.defaultColor};
     }

@@ -2,30 +2,48 @@ import * as React from 'react';
 import { useParams } from 'react-router-dom';
 import { Article, Badge } from '../../../../ui-ittyni/src'
 import { Ico } from '../../../../react-icons-sc/src/ico';
-import {microscop} from '../../icon/microscop'
+import { microscop } from '../../icon/microscop'
 import { Labos } from '../controller/Labos';
 import { Helmet } from 'react-helmet';
+import { useSelector } from 'react-redux';
 
 const Labo = new Labos();
 
-export const LaboDetails = ({laboDetails} : any) => {
+export const LaboDetails: React.FC<any> = () => {
 
-    const { category, labo } = useParams()
+    const { labo }: any = useParams();
+    // get laboDetails
+    const {Details} = useSelector(({labState}:any) => labState.labo)
 
-    if (category === 'laboratoire-d-analyses-medicales' && labo !== undefined) {
-        if(laboDetails === undefined || laboDetails === null || laboDetails.account.name !== labo){
-            Labo.laboDetailsFetch(labo);
-            return(<div>Loading...</div>)
-        } else {
-            const {
-                account, contact : {tele, address}
-            } = laboDetails
-        return (
-            <>
+    React.useEffect(() => {
+        Labo.laboDetailsFetch(labo)
+    }, [labo])
+
+    return (<>
+        {!Details && <div>Loadin...</div>}
+        {Details && <>
             <Helmet>
-                <meta name="description" content={`Laboratoire ${account.name} a fes`} />
-                <meta name="keywords" content={`Laboratoire ${account.name} prix address cnops cnss remborsement`} />
-                <title>{`Laboratoire ${account.name} - fes`}</title>
+            <script type="application/ld+json">
+                    {`{
+                        "@context" : "https://schema.org/",
+                        "@type": "MedicalOrganization",
+                        "medicalSpecialty": "DiagnosticLab",
+                        "name" : "${Details.account.name}",
+                        "address" : {
+                            "@type": "PostalAddress",
+                            "streetAddress": "${Details.contact.address.street}",
+                            "addressLocality": "${Details.contact.address.city}",
+                            "addressCountry": "Maroc"
+                        },
+                        "telephone" : "${Details.contact.tele.fix[0]}"
+                    }`}
+                </script>
+                <meta name="description" content={`Laboratoire d'analyses Medicales ${Details.account.name} a ${Details.contact.address.city}`} />
+                <meta name="keywords" content={`
+                    Laboratoires d'analyses Medicales ${Details.account.name} prix address cnops cnss remborsement rendez-vous prelevement a domicile
+                    sur ${Details.contact.address.street} liste tarifs des actes biologiques annuaire des laboratoires maroc
+                `} />
+                <title>{`Laboratoire ${Details.account.name} - ${Details.contact.address.city}`}</title>
             </Helmet>
             <Article.Container>
                 <Article.Header>
@@ -40,26 +58,24 @@ export const LaboDetails = ({laboDetails} : any) => {
                             </Article.HeaderAvatarIcon>
                         </Article.HeaderAvatar>
                         <Article.HeaderAbstract>
-                            <Article.HeaderTitle>{account.name}</Article.HeaderTitle>
-                            <Article.HeaderSubTitle>{category.split('-').join(' ')}</Article.HeaderSubTitle>
+                            <Article.HeaderTitle>{Details.account.name}</Article.HeaderTitle>
+                            <Article.HeaderSubTitle>Laboratoire d'Analyse Medicales</Article.HeaderSubTitle>
                             <Article.HeaderMiddle>
-                                {address.street}
+                                {Details.contact.address.street} - {Details.contact.address.city}
                             </Article.HeaderMiddle>
                             <Article.HeaderFoot>
                                 <Article.HeaderFootAssurance>
-                                    <p>tele : <Badge>{tele.fix[0]}</Badge></p>
+                                    <p>tele : <Badge>{Details.contact.tele.fix[0]}</Badge></p>
                                 </Article.HeaderFootAssurance>
                             </Article.HeaderFoot>
                         </Article.HeaderAbstract>
                     </Article.HeaderContainer>
                 </Article.Header>
             </Article.Container>
-            </>
-        )}
-    } else {
-        return (<></>)
-    }
+        </>}
+    </>)
 }
+
 
 interface ArticleDetailH1 {
     h1: string,

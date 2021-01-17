@@ -1,0 +1,52 @@
+export enum DrugActions {
+    /**
+     * fetch labTests
+     */  
+    DRUG_LIST_BY_ALPHABETE = "@@drug/DRUG_LIST_BY_ALPHABETE",
+    DRUG_LIST_BY_ALPHABETE_ERROR = "@@drug/DRUG_LIST_BY_ALPHABETE_ERROR",
+    DRUG_LIST_BY_ALPHABETE_SUCCESS = "@@drug/DRUG_LIST_BY_ALPHABETE_SUCCESS",
+    /**
+     * fetch labTests
+     */  
+    DRUG_LIST_BY_NAME = "@@drug/DRUG_LIST_BY_NAME",
+    DRUG_LIST_BY_NAME_ERROR = "@@drug/DRUG_LIST_BY_NAME_ERROR",
+    DRUG_LIST_BY_NAME_SUCCESS = "@@drug/DRUG_LIST_BY_NAME_SUCCESS",
+    /**
+     * fetch labTests
+     */  
+    DRUG_LIST_CATEGORIES = "@@drug/DRUG_LIST_CATEGORIES",
+    DRUG_LIST_CATEGORIES_ERROR = "@@drug/DRUG_LIST_CATEGORIES_ERROR",
+    DRUG_LIST_CATEGORIES_SUCCESS = "@@drug/DRUG_LIST_CATEGORIES_SUCCESS",
+    /**
+     * fetch labTests
+     */  
+    DRUG_LIST_CHAPTERS = "@@drug/DRUG_LIST_CHAPTERS",
+    DRUG_LIST_CHAPTERS_ERROR = "@@drug/DRUG_LIST_CHAPTERS_ERROR",
+    DRUG_LIST_CHAPTERS_SUCCESS = "@@drug/DRUG_LIST_CHAPTERS_SUCCESS",
+    /**
+     * fetch labTests
+     */  
+    DRUG_LIST_SOUS_CHAPTERS = "@@drug/DRUG_LIST_SOUS_CHAPTERS",
+    DRUG_LIST_SOUS_CHAPTERS_ERROR = "@@drug/DRUG_LIST_SOUS_CHAPTERS_ERROR",
+    DRUG_LIST_SOUS_CHAPTERS_SUCCESS = "@@drug/DRUG_LIST_SOUS_CHAPTERS_SUCCESS",
+    /**
+     * fetch labTests
+     */  
+    DRUG_LIST_GROUP = "@@drug/DRUG_LIST_GROUP",
+    DRUG_LIST_GROUP_ERROR = "@@drug/DRUG_LIST_GROUP_ERROR",
+    DRUG_LIST_GROUP_SUCCESS = "@@drug/DRUG_LIST_GROUP_SUCCESS",
+    /**
+     * fetch labTests
+     */  
+    DRUG_LIST_BY_ATC = "@@drug/DRUG_LIST_BY_ATC",
+    DRUG_LIST_BY_ATC_ERROR = "@@drug/DRUG_LIST_BY_ATC_ERROR",
+    DRUG_LIST_BY_ATC_SUCCESS = "@@drug/DRUG_LIST_BY_ATC_SUCCESS",
+    /**
+     * fetch labTests
+     */  
+    DRUG_FETCH_DETAILS = "@@drug/DRUG_FETCH_DETAILS",
+    DRUG_FETCH_DETAILS_ERROR = "@@drug/DRUG_FETCH_DETAILS_ERROR",
+    DRUG_FETCH_DETAILS_SUCCESS = "@@drug/DRUG_FETCH_DETAILS_SUCCESS",
+
+  }
+  

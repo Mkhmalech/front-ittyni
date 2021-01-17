@@ -172,6 +172,7 @@ interface LabLaboAffiliate {}
 interface LabLaboStaff {}
 
 interface LaboWeb {
+  _id: string;
   account?    : LabLaboAccount;
   contact?    : LabLaboContact;
 }
