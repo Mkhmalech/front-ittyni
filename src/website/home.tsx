@@ -18,6 +18,7 @@ import { PharmaciesByCity } from './pharmacies/pharmaListCity'
 import { PharmDetails } from './pharmacies/pharmaDetails'
 import { DrugByAtcCode, DrugByCategory, DrugByChapter, DrugByGroup, DrugBySousChapter, MedicineDetails } from './medicine'
 import { LabTestSearch } from '../lab-ittyni/src/labTests/web/LabTestSearch';
+import { Footer } from './footer';
 
 interface IHomeProps extends
   /** laboState */
@@ -169,7 +170,7 @@ export const Home: React.FunctionComponent<IHomeProps> = ({ listAll, labTestFrDe
         </Wrapper.Main>
 
         <Wrapper.Footer>
-          All Copyrights reserved for iTTyni(c) v1.0.0Beta
+         <Footer />
         </Wrapper.Footer>
       </Wrapper.Page>
     </>

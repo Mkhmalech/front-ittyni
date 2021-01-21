@@ -13,7 +13,7 @@ export const LaboDetails: React.FC<any> = () => {
 
     const { labo }: any = useParams();
     // get laboDetails
-    const {Details} = useSelector(({labState}:any) => labState.labo)
+    const { Details } = useSelector(({ labState }: any) => labState.labo)
 
     React.useEffect(() => {
         Labo.laboDetailsFetch(labo)
@@ -23,7 +23,7 @@ export const LaboDetails: React.FC<any> = () => {
         {!Details && <div>Loadin...</div>}
         {Details && <>
             <Helmet>
-            <script type="application/ld+json">
+                <script type="application/ld+json">
                     {`{
                         "@context" : "https://schema.org/",
                         "@type": "MedicalOrganization",

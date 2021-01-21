@@ -78,7 +78,16 @@ export const MainSide = styled('div')`
  */
 export const Footer = styled('footer').attrs({className : "footerWrapper"})`
     min-height : 20px;
-    background : ${({theme})=>theme.color.defaultColor};
+    background-color: #26272b;
     text-align : center;
     border-top: 1px solid #d4d4d4;
+    padding: 45px 0 20px;
+    display : flex;
+    flex-direction: column;
+    * {
+        background-color: #26272b;        
+        font-size: 15px;
+        line-height: 24px;
+        color: #737373;
+    }
 `

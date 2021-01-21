@@ -5,7 +5,7 @@ import { useParams } from 'react-router';
 import { Ico } from '../../react-icons-sc/src/ico';
 import { Article, Badge } from '../../ui-ittyni/src';
 import { pharmafetchDetails } from './store/controller';
-import {pharmacy} from './ico/pharmacy'
+import { pharmacy } from './ico/pharmacy'
 
 
 export const PharmDetails: React.FC<any> = (props) => {
@@ -14,17 +14,28 @@ export const PharmDetails: React.FC<any> = (props) => {
   // get phamacies list of the city
   const { pharmaDetails } = useSelector(({ pharma }: any) => pharma)
 
-  React.useEffect(()=>{
+  React.useEffect(() => {
     pharmafetchDetails(pharma);
-  },[pharma])
+  }, [pharma])
   return (
     <>
       {pharmaDetails && <><Helmet>
+        <script type="application/ld+json">
+          {`{
+              "@context" : "https://schema.org/",
+              "@type": "Pharmacy",
+              "name" : "${pharmaDetails.account.name}",
+              "address" : {
+                  "@type": "PostalAddress",
+                  "streetAddress": "${pharmaDetails.contact.address.street}",
+                  "addressLocality": "${pharmaDetails.contact.address.city}",
+                  "addressCountry": "Maroc"
+              },
+              "telephone" : "${pharmaDetails.contact.tele.fix[0]}"
+          }`}
+        </script>
         <meta name="description" content={`${pharmaDetails.account.name} address ${pharmaDetails.contact.address.street}`} />
-        <meta name="keywords" content={`
-          Laboratoires d'analyses Medicales ${pharmaDetails.account.name} prix address cnops cnss remborsement
-          sur ${pharmaDetails.contact.address.city} liste tarifs des actes biologiques annuaire des laboratoires maroc
-      `} />
+        <meta name="keywords" content={`Pharmacie ${pharmaDetails.account.name} prix des medicaments address cnops cnss remborsement`} />
         <title>{`${pharmaDetails.account.name} - ${pharmaDetails.contact.address.city}`}</title>
       </Helmet>
         <Article.Container>
@@ -33,10 +44,10 @@ export const PharmDetails: React.FC<any> = (props) => {
               <Article.HeaderAvatar>
                 <Article.HeaderAvatarIcon>
                   <Ico
-                          {...pharmacy}
-                          width="140"
-                          height="140"
-                      />
+                    {...pharmacy}
+                    width="140"
+                    height="140"
+                  />
                 </Article.HeaderAvatarIcon>
               </Article.HeaderAvatar>
               <Article.HeaderAbstract>

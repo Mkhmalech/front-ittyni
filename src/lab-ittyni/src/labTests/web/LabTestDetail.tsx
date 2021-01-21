@@ -35,7 +35,7 @@ export const LabTestDetail: React.FC<any> = () => {
                             "@type": "Brand",
                             "name": "ANALYSE MEDICALE"
                         },
-                        description : "le prix d analyse ${labTestFrDetails.name.fr} au maroc et les remboressements des mutuelles cnops la cnss cmim",
+                        "description" : "le prix d analyse ${labTestFrDetails.name.fr} au maroc et les remboressements des mutuelles cnops la cnss cmim",
                         "offers": {
                             "@type": "Offer",
                             "url": "https://ittyni.com/${location.pathname}",
