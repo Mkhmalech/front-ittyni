@@ -25,14 +25,14 @@ export const MedicalBook: React.FC<any> = (props) => {
             </CardBody><CardFooter><p>Trouver Lab</p></CardFooter></div>
         </Card>
       </CardLink>
-      <CardLink to="#">
+      <CardLink to="/annuaire/cabinets/maroc">
         <Card>
           <div>
             <CardBody>
               <i className="fas fa-user-md" />
               <h2>Cabinets</h2>
-              <p>en Cours</p>
-            </CardBody><CardFooter><p>en Cours</p></CardFooter></div>
+              <p>1130 cabinets</p>
+            </CardBody><CardFooter><p>Trouver Cab</p></CardFooter></div>
         </Card>
       </CardLink>
     </div>

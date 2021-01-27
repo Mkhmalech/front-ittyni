@@ -22,7 +22,7 @@ export const NavTabs: React.FC<INavTabsProps> = (props) => {
             {(category === "annuaire") && <>
                 <Link to="/annuaire/pharmacies/maroc">PHARMACIES</Link>
                 <Link to="/annuaire/labm/maroc">LABORATOIRES</Link>
-                <Link to="#">CABINETS</Link>
+                <Link to="/annuaire/cabinets/maroc">CABINETS</Link>
                 <Link to="#">CLINIQUES</Link>
             </>}
         </Nav>

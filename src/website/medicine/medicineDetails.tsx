@@ -19,7 +19,6 @@ export const MedicineDetails: React.FC<any> = (props) => {
   }, [medicine])
   return (
     <div>
-
       <List.Container>
         {details &&
           <List.Item style={{ minHeight: "auto", display: "flex", flexDirection: "column" }}>
@@ -36,7 +35,29 @@ export const MedicineDetails: React.FC<any> = (props) => {
                         "name": "${d.title}",
                         "brand": {	
                             "@type": "Brand",
-                            "name": "Medicament"
+                            "name": "${d.distributor}"
+                        },
+                        "sku": "${medicine}",
+                        "mpn": "${medicine}",
+                        "image" :[
+                          "https://ittyni.com/img/drugs.png"
+                        ],
+                        "review": {
+                          "@type": "Review",
+                          "reviewRating": {
+                            "@type": "Rating",
+                            "ratingValue": "3",
+                            "bestRating": "5"
+                          },
+                          "author": {
+                            "@type": "Person",
+                            "name": "iTTyni"
+                          }
+                        },
+                        "aggregateRating": {
+                          "@type": "AggregateRating",
+                          "ratingValue": "4.4",
+                          "reviewCount": "89"
                         },
                         "description" : "le prix d medicament ${d.title} au maroc et les remboressements des mutuelles cnops la cnss cmim",
                         "offers": {
@@ -44,7 +65,8 @@ export const MedicineDetails: React.FC<any> = (props) => {
                             "url": "https://ittyni.com/${location.pathname}",
                             "priceCurrency": "MAD",
                             "price": "${Math.floor(d.ppv)}",
-                            "availability": "https://schema.org/InStock"
+                            "availability": "https://schema.org/InStock",
+                            "priceValidUntil": "2050-11-20"
                         }
                     }`}
                 </script>

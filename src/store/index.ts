@@ -24,6 +24,8 @@ import { adminReducer } from '../admin/store/reducers';
 import { LabLaboSaga } from '../lab-ittyni/src/labos/store/saga';
 import * as PHARMA from '../website/pharmacies'
 import * as Drug from '../website/medicine'
+import * as Ngap from '../website/ngap'
+import * as Cabinet from '../website/cabinets'
 
 export interface IttyniState {
     labState: LabState
@@ -37,7 +39,9 @@ export const createRootReducer = (history: History) =>
     combineReducers({
         labState: rootLabReducer,
         pharma: PHARMA.PharmaReducer,
+        cabinet: Cabinet.CabinetReducer,
         medicine : Drug.MedicineReducer,
+        ngap : Ngap.NGAPReducer,
         admin: adminReducer,
         Auth: AuthReducers,
         router: connectRouter(history)
@@ -60,6 +64,12 @@ export function* rootSaga() {
         
         // web application sagas
         fork(Drug.MedicineSaga),
+        
+        // web application sagas
+        fork(Ngap.NGAPSaga),
+        
+        // web application sagas
+        fork(Cabinet.CabinetSaga),
 
         // //Administration Sagas
         // fork(LabTestsListingAdminSaga)

@@ -2,9 +2,21 @@ export enum NGAPActions {
     /**
      * fetch labTests
      */  
-    NGAP_LIST_BY_CODE = "@@ngap/NGAP_LIST_BY_CODE",
-    NGAP_LIST_BY_CODE_ERROR = "@@ngap/NGAP_LIST_BY_CODE_ERROR",
-    NGAP_LIST_BY_CODE_SUCCESS = "@@ngap/NGAP_LIST_BY_CODE_SUCCESS",
+    NGAP_LIST_CHAPTERS = "@@ngap/NGAP_LIST_CHAPTERS",
+    NGAP_LIST_CHAPTERS_ERROR = "@@ngap/NGAP_LIST_CHAPTERS_ERROR",
+    NGAP_LIST_CHAPTERS_SUCCESS = "@@ngap/NGAP_LIST_CHAPTERS_SUCCESS",
+    /**
+     * fetch labTests
+     */  
+    NGAP_LIST_BY_GROUPS = "@@ngap/NGAP_LIST_BY_GROUPS",
+    NGAP_LIST_BY_GROUPS_ERROR = "@@ngap/NGAP_LIST_BY_GROUPS_ERROR",
+    NGAP_LIST_BY_GROUPS_SUCCESS = "@@ngap/NGAP_LIST_BY_GROUPS_SUCCESS",
+    /**
+     * fetch labTests
+     */  
+    NGAP_LIST_ACTES = "@@ngap/NGAP_LIST_ACTES",
+    NGAP_LIST_ACTES_ERROR = "@@ngap/NGAP_LIST_ACTES_ERROR",
+    NGAP_LIST_ACTES_SUCCESS = "@@ngap/NGAP_LIST_ACTES_SUCCESS",
     /**
      * fetch labTests
      */  

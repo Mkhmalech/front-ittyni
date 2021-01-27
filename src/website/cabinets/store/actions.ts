@@ -1,0 +1,34 @@
+export enum CabinetActions {
+    /**
+     * fetch twenty pharma
+     */  
+    CABINET_LIST_BY_CITY_TOTAL = "@@cabinet/CABINET_LIST_BY_CITY_TOTAL",
+    CABINET_LIST_BY_CITY_TOTAL_ERROR = "@@cabinet/CABINET_LIST_BY_CITY_TOTAL_ERROR",
+    CABINET_LIST_BY_CITY_TOTAL_SUCCESS = "@@cabinet/CABINET_LIST_BY_CITY_TOTAL_SUCCESS",
+    /**
+     * fetch twenty pharma
+     */  
+    CABINET_LIST_BY_CITY = "@@cabinet/CABINET_LIST_BY_CITY",
+    CABINET_LIST_BY_CITY_ERROR = "@@cabinet/CABINET_LIST_BY_CITY_ERROR",
+    CABINET_LIST_BY_CITY_SUCCESS = "@@cabinet/CABINET_LIST_BY_CITY_SUCCESS",
+    /**
+     * fetch labTests
+     */  
+    CABINET_LIST_ALL_CITY = "@@cabinet/CABINET_LIST_ALL_CITY",
+    CABINET_LIST_ALL_CITY_ERROR = "@@cabinet/CABINET_LIST_ALL_CITY_ERROR",
+    CABINET_LIST_ALL_CITY_SUCCESS = "@@cabinet/CABINET_LIST_ALL_CITY_SUCCESS",
+    /**
+     * fetch labTests
+     */  
+    CABINET_FETCH_DETAILS = "@@cabinet/CABINET_FETCH_DETAILS",
+    CABINET_FETCH_DETAILS_ERROR = "@@cabinet/CABINET_FETCH_DETAILS_ERROR",
+    CABINET_FETCH_DETAILS_SUCCESS = "@@cabinet/CABINET_FETCH_DETAILS_SUCCESS",
+    /**
+     * fetch labTests
+     */  
+    CABINET_SEARCH_BY_NAME = "@@cabinet/CABINET_SEARCH_BY_NAME",
+    CABINET_SEARCH_BY_NAME_ERROR = "@@cabinet/CABINET_SEARCH_BY_NAME_ERROR",
+    CABINET_SEARCH_BY_NAME_SUCCESS = "@@cabinet/CABINET_SEARCH_BY_NAME_SUCCESS",
+
+  }
+  

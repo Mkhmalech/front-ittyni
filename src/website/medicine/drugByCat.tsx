@@ -14,7 +14,7 @@ export const DrugByCategory: React.FC<any> = () => {
   }, [])
   return (
     <div>
-      Drugs List By details
+      <h1>Liste des Groupes de Medicaments</h1>
       <List.Container>
         {categories && categories.map((cat: any) =>
           <List.Item style={{ minHeight: "auto", cursor: "pointer" }}>
@@ -36,7 +36,7 @@ export const DrugByChapter: React.FC<any> = () => {
   }, [])
   return (
     <div>
-      Drugs List By details
+      <h1>Liste des Chapitres de Medicaments</h1>
       <List.Container>
         {chapters && chapters.map((cat: any) =>
           <List.Item style={{ minHeight: "auto", cursor: "pointer" }}>
@@ -58,7 +58,7 @@ export const DrugBySousChapter: React.FC<any> = () => {
   }, [])
   return (
     <div>
-      Drugs List By details
+      <h1>Liste des Groupes de Medicaments</h1>
       <List.Container>
         {sousChapters && sousChapters.map((cat: any) =>
           <List.Item style={{ minHeight: "auto", cursor: "pointer" }}>
@@ -80,7 +80,7 @@ export const DrugByGroup: React.FC<any> = () => {
   }, [])
   return (
     <div>
-      Drugs List By details
+      <h1>Liste des Groupes de Medicaments</h1>
       <List.Container>
         {groups && groups.map((cat: any) =>
           <List.Item style={{ minHeight: "auto", cursor: "pointer" }}>

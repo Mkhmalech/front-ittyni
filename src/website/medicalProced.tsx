@@ -26,14 +26,14 @@ export const MedicalProcedures: React.FC<any> = (props) => {
             </CardBody><CardFooter><p>medicaments</p></CardFooter></div>
         </Card>
       </CardLink>
-      <CardLink to="#">
+      <CardLink to="/actes-tarifs/ngap/">
         <Card>
           <div>
             <CardBody>
               <i className="fas fa-briefcase-medical" />
               <h2>NGAP</h2>
               <p>1600 Actes</p>
-            </CardBody><CardFooter><p>en Cours</p></CardFooter></div>
+            </CardBody><CardFooter><p>Trouver Acte</p></CardFooter></div>
         </Card>
       </CardLink>
       <CardLink to="#">

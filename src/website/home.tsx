@@ -19,6 +19,11 @@ import { PharmDetails } from './pharmacies/pharmaDetails'
 import { DrugByAtcCode, DrugByCategory, DrugByChapter, DrugByGroup, DrugBySousChapter, MedicineDetails } from './medicine'
 import { LabTestSearch } from '../lab-ittyni/src/labTests/web/LabTestSearch';
 import { Footer } from './footer';
+import { NgapByChapter, NgapByGroups, NgapByActes } from './ngap/ngap';
+import { NgapActeDetails } from './ngap/ngapDetails';
+import { Cabinets } from './cabinets/cabinetListCities';
+import { CabinetsByCity } from './cabinets/cabinetListCity';
+import { CabinetDetails } from './cabinets/cabinetDetails';
 
 interface IHomeProps extends
   /** laboState */
@@ -27,7 +32,7 @@ interface IHomeProps extends
   LabTestState { }
 
 export const Home: React.FunctionComponent<IHomeProps> = ({ listAll, labTestFrDetails, laboDetails }) => {
-  
+
   React.useEffect(() => {
     window.scrollTo(0, 0);
   });
@@ -72,35 +77,52 @@ export const Home: React.FunctionComponent<IHomeProps> = ({ listAll, labTestFrDe
         </Wrapper.Header>
         <Wrapper.Main>
           <Wrapper.MainContent>
-{/* ************************************ List des actes de biologie **************************************/}
+            {/* ************************************ List des actes de ngap **************************************/}
+              {/** lab procedure list page */}
+              <Route path={"/annuaire/cabinet/maroc/:city/:cabinet"} component={CabinetDetails} exact />
+              {/** lab procedure list page */}
+              <Route path={"/annuaire/cabinets/maroc/:city"} component={CabinetsByCity} exact />
+              {/* list medicament categories*/}
+              <Route path={"/annuaire/cabinets/maroc"} component={Cabinets} exact />
+              {/* ************************************ List des actes de ngap **************************************/}
+              {/* list medicament categories*/}
+              <Route path={"/actes-tarifs/nomenclature-generale-des-actes-professionnels/:code"} component={NgapActeDetails} exact />
+              {/* list medicament categories*/}
+              <Route path={"/actes-tarifs/ngap/:letter/:group"} component={NgapByActes} exact />
+              {/* list medicament categories*/}
+              <Route path={"/actes-tarifs/ngap/:letter"} component={NgapByGroups} exact />
+              {/* list medicament categories*/}
+              <Route path={"/actes-tarifs/ngap"} component={NgapByChapter} exact />
+
+            {/* ************************************ List des actes de biologie **************************************/}
             {/* list medicament categories*/}
-            <Route path={"/actes-tarifs/medicament/:medicine"} component={MedicineDetails} exact/>
+            <Route path={"/actes-tarifs/medicament/:medicine"} component={MedicineDetails} exact />
             {/* list medicament categories*/}
-            <Route path={"/actes-tarifs/medicaments/:code"} component={DrugByAtcCode} exact/>
+            <Route path={"/actes-tarifs/medicaments/:code"} component={DrugByAtcCode} exact />
             {/* list medicament categories*/}
-            <Route path={"/actes-tarifs/atc/:chapter/:sousChap/:group"} component={DrugByGroup} exact/>
+            <Route path={"/actes-tarifs/atc/:chapter/:sousChap/:group"} component={DrugByGroup} exact />
             {/* list medicament categories*/}
-            <Route path={"/actes-tarifs/atc/:chapter/:sousChap"} component={DrugBySousChapter} exact/>
+            <Route path={"/actes-tarifs/atc/:chapter/:sousChap"} component={DrugBySousChapter} exact />
             {/* list medicament categories*/}
-            <Route path={"/actes-tarifs/atc/:chapter"} component={DrugByChapter} exact/>
+            <Route path={"/actes-tarifs/atc/:chapter"} component={DrugByChapter} exact />
             {/* list medicament categories*/}
-            <Route path={"/actes-tarifs/atc/"} component={DrugByCategory} exact/>            
+            <Route path={"/actes-tarifs/atc/"} component={DrugByCategory} exact />
             {/** lab procedure list page */}
             <Route path={"/actes-tarifs/nabm/"} component={routes.lab.LabTests.labTests.component} />
 
             {/** lab procedure list page */}
-            <Route path={routes.lab.LabTests.labTests.path} component={() =><Redirect to={`/actes-tarifs/nabm/`} />} exact />
-{/* ************** Routes to pharmacie component ************************* */}
+            <Route path={routes.lab.LabTests.labTests.path} component={() => <Redirect to={`/actes-tarifs/nabm/`} />} exact />
+            {/* ************** Routes to pharmacie component ************************* */}
             {/** lab procedure list page */}
-            <Route path={"/annuaire/pharmacie/maroc/:city/:pharma"} component={PharmDetails} exact/>
+            <Route path={"/annuaire/pharmacie/maroc/:city/:pharma"} component={PharmDetails} exact />
             {/** lab procedure list page */}
-            <Route path={"/annuaire/pharmacie/maroc/:city"} component={PharmaciesByCity} exact/>
+            <Route path={"/annuaire/pharmacie/maroc/:city"} component={PharmaciesByCity} exact />
             {/** list des pharmacies by cities */}
-            <Route path={"/annuaire/pharmacies/maroc"} component={Pharmacies} exact/>
-{/* ************** Need to be updated by abbr test to optimize SEO ************************* */}
+            <Route path={"/annuaire/pharmacies/maroc"} component={Pharmacies} exact />
+            {/* ************** Need to be updated by abbr test to optimize SEO ************************* */}
             {/** lab procedure details */}
             <Route path={'/actes-tarifs/nomenclature-actes-biologie-médicale/:test'}
-              component={() => <routes.lab.LabTests.labTestDetail.component  />} exact />
+              component={() => <routes.lab.LabTests.labTestDetail.component />} exact />
             {/** lab procedure details */}
             <Route path={routes.lab.LabTests.labTestDetail.path}
               component={() => {
@@ -114,16 +136,16 @@ export const Home: React.FunctionComponent<IHomeProps> = ({ listAll, labTestFrDe
                 return (<Redirect to={`/actes-tarifs/nomenclature-actes-biologie-médicale/${testnamefr}`} />)
               }} exact />
 
-{/************************** list of cities with number of labs ***********************************************/}
+            {/************************** list of cities with number of labs ***********************************************/}
 
             <Route path={'/annuaire/labm/maroc'} component={() => <routes.lab.Labo.Labos.component labos={listAll} />} exact />
 
             {/** lab labos page */}
-            <Route path={routes.lab.Labo.Labos.path} component={()=><Redirect to={'/annuaire/labm/maroc'} />} exact />
-{/* ***********************laboratoire details ******************************************* */}
+            <Route path={routes.lab.Labo.Labos.path} component={() => <Redirect to={'/annuaire/labm/maroc'} />} exact />
+            {/* ***********************laboratoire details ******************************************* */}
             {/** Lab labos details */}
             <Route path={'/annuaire/labm/maroc/:city/:labo'}
-              component={() => <routes.lab.Labo.LaboDetails.component laboDetails={laboDetails} />} exact/>
+              component={() => <routes.lab.Labo.LaboDetails.component laboDetails={laboDetails} />} exact />
             {/** Lab labos details */}
             <Route path={routes.lab.Labo.LaboDetails.path}
               component={() => {
@@ -131,16 +153,16 @@ export const Home: React.FunctionComponent<IHomeProps> = ({ listAll, labTestFrDe
                 return (<Redirect to={`/annuaire/labm/maroc/${city}/${labo}`} />)
               }} exact />
 
-{/******************* Lab labos by city *******************************************/}
+            {/******************* Lab labos by city *******************************************/}
             <Route path={'/annuaire/labm/maroc/:city'}
-              component={() => <LabosLisitingByCity />} exact/>
+              component={() => <LabosLisitingByCity />} exact />
             {/** Lab labos details */}
             <Route path={'/website/labm/maroc/:city'}
               component={() => {
                 const { city }: any = useParams();
                 return (<Redirect to={`/annuaire/labm/maroc/${city}`} />)
               }} exact />
-{/* ********************************************************************************/}
+            {/* ********************************************************************************/}
             {/* any rout in website */}
             <Route path="/annuaire/" component={MedicalBook} exact />
             {/* any rout in website */}
@@ -170,7 +192,7 @@ export const Home: React.FunctionComponent<IHomeProps> = ({ listAll, labTestFrDe
         </Wrapper.Main>
 
         <Wrapper.Footer>
-         <Footer />
+          <Footer />
         </Wrapper.Footer>
       </Wrapper.Page>
     </>

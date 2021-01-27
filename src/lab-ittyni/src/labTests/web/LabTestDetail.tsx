@@ -35,13 +35,36 @@ export const LabTestDetail: React.FC<any> = () => {
                             "@type": "Brand",
                             "name": "ANALYSE MEDICALE"
                         },
+                        "sku": "${test}",
+                        "mpn": "${test}",
+                        "image" :[
+                          "https://ittyni.com/img/labtest.jpg"
+                        ],
+                        "review": {
+                          "@type": "Review",
+                          "reviewRating": {
+                            "@type": "Rating",
+                            "ratingValue": "3",
+                            "bestRating": "5"
+                          },
+                          "author": {
+                            "@type": "Person",
+                            "name": "iTTyni"
+                          }
+                        },
+                        "aggregateRating": {
+                          "@type": "AggregateRating",
+                          "ratingValue": "4.4",
+                          "reviewCount": "89"
+                        },
                         "description" : "le prix d analyse ${labTestFrDetails.name.fr} au maroc et les remboressements des mutuelles cnops la cnss cmim",
                         "offers": {
                             "@type": "Offer",
                             "url": "https://ittyni.com/${location.pathname}",
                             "priceCurrency": "MAD",
                             "price": "${Math.floor(labTestFrDetails.finance[0].Bcode * 1.34)}",
-                            "availability": "https://schema.org/InStock"
+                            "availability": "https://schema.org/InStock",
+                            "priceValidUntil": "2050-11-20"
                         }
                     }`}
                 </script>
