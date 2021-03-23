@@ -10,7 +10,7 @@ export const CabinetReducer = (state = {}, action: AnyAction) => {
             return { ...state, cabinetlist: action.payload.listCabinetsTwntyByCity }
 
         case CabinetActions.CABINET_LIST_ALL_CITY_SUCCESS:
-            return { ...state, cabinetlist: action.payload.fetchAllByCity }
+            return { ...state, cabinetlist: action.payload.listCabinetsAllByCity }
 
         case CabinetActions.CABINET_FETCH_DETAILS_SUCCESS:
             return { ...state, cabinetDetails: action.payload.listCabinetDetailsById }

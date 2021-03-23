@@ -52,7 +52,7 @@ export const CabinetDetails: React.FC<any> = (props) => {
               </Article.HeaderAvatar>
               <Article.HeaderAbstract>
                 <Article.HeaderTitle>{cabinetDetails.account.name}</Article.HeaderTitle>
-                <Article.HeaderSubTitle>Pharmacie au Maroc</Article.HeaderSubTitle>
+                <Article.HeaderSubTitle>{cabinetDetails.account.type}</Article.HeaderSubTitle>
                 <Article.HeaderMiddle>
                   {cabinetDetails.contact.address.street} - {city}
                 </Article.HeaderMiddle>

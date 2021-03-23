@@ -1,6 +1,7 @@
 import { call, put } from "redux-saga/effects";
 
 export const api = 'http://localhost:8080';
+// export const api = 'http://localhost:8080';
 
 export async function callApi(method: string, url: string, path: string, data?: any) {
     const res = await fetch(`${url}/${path}`, {
@@ -20,7 +21,7 @@ export function* tryFetching(path: string, payload : string, actionWhenFailed : 
    if(loadingAction) yield put({type : loadingAction})
 
     try{
-        const res = yield call(callApi, 'post', api, path, payload );
+        const res : any = yield call(callApi, 'post', api, path, payload );
 
         if(res && res.errors && res.errors[0].message != 'null') {
             yield put({
