@@ -6,7 +6,7 @@ import { AnyAction } from 'redux';
 function* handleFetchUser({path, payload}: any){
 
     try {
-        const res = yield call(config.callApi, 'post', config.api, path, payload);
+        const res  = yield call(config.callApi, 'post', config.api, path, payload);
         
         if(res.errors){
             yield put({type : AuthActions.AUTH_LOGIN_FETCH_USER_ERROR ,error : res.errors[0].message})
@@ -23,24 +23,28 @@ function* handleFetchUser({path, payload}: any){
  */
 function* handleVerifyToken({path, payload} : AnyAction){
 
-    try {
-        const res = yield call(config.callApi, 'post', config.api, path, payload);
+    yield config.tryFetching(
+        path,
+        payload,
+        AuthActions.AUTH_TOKEN_VERIFY_FALSE,
+        AuthActions.AUTH_TOKEN_VERIFY_TRUE
+    )
 
-        if(res.errors){
-            yield put({type : AuthActions.AUTH_TOKEN_VERIFY_FALSE ,error : res.errors[0].message})
-        } else {
-            yield put({type : AuthActions.AUTH_TOKEN_VERIFY_TRUE, payload : res.data.verifyToken})
-        }
+}
 
-    } catch(e) {
-        throw new Error(e);
-    }
-
+function* handleAuthByGoogle({path, payload} : AnyAction){
+    yield config.tryFetching(
+        path,
+        payload,
+        AuthActions.AUTH_BY_GOOGLE_ERROR,
+        AuthActions.AUTH_BY_GOOGLE_SUCCESS
+    )
 }
 
 function* watchFetchUser(){
     yield takeEvery(AuthActions.AUTH_LOGIN_FETCH_USER, handleFetchUser)
     yield takeEvery(AuthActions.AUTH_TOKEN_VERIFY, handleVerifyToken)
+    yield takeEvery(AuthActions.AUTH_BY_GOOGLE, handleAuthByGoogle)
 }
 
 function* AuthSaga(){

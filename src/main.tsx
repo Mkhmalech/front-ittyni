@@ -11,8 +11,7 @@ import { History } from "history";
 import { ThemeProvider } from "styled-components";
 import { theme } from "./theme";
 
-import HomeLayout from './website/index'
-import { routes } from './routes';
+import {Home} from './website/index'
 import Admin from './admin/Layout'
 
 
@@ -29,10 +28,8 @@ const Main: React.FC<MainProps> = ({ store, history }) => {
                 <Provider store={store}>
                     <Router history={history}>
                         <Switch>
-                            <Route path={routes.admin.path} component={Admin} />
-                            <Route path={routes.website.path} component={HomeLayout} />
-                            <Route path={'/annuaire/*'} component={HomeLayout} />
-                            <Route path={'/actes-tarifs/*'} component={HomeLayout} />
+                            <Route path={'/annuaire/*'} component={Home} />
+                            <Route path={'/actes-tarifs/*'} component={Home} />
                             <Redirect from='/*' to={'/actes-tarifs/*'} />
                         </Switch>
                     </Router>

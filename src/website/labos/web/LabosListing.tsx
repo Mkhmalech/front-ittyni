@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as List from '../../../../ui-ittyni/src/list/list'
+import * as List from '../../../ui-ittyni/src/list/list'
 
 import { Link } from 'react-router-dom';
 import Helmet from 'react-helmet';

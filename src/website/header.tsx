@@ -17,6 +17,7 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({ isAuthPage, children }) => {
   // show search box
   const [showSearch, setShowSearch] = React.useState<boolean>(false)
+
   return (
     <>
       <div style={{ display: "flex" }}>

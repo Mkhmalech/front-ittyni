@@ -16,6 +16,10 @@ interface AuthLoginState {
     isAuth      : Authenticated
     username?   : AuthUsername
     userId?     : AuthID
+    fname ? : sring
+    lname ?: sring
+    picture ? : sring
+    email  ?: sring
 }
 
 interface AuthSignupState {

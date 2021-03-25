@@ -9,6 +9,21 @@ export const searchLabTests = (q:string)=>store.dispatch({
       path: "tests"
 })
 
+export const fetchTwentyTests = () => store.dispatch({
+  type: LabTestActions.LAB_TESTS_FR_FETCH_TWENTY,
+  payload: {
+    query: `query{fetchTwentyLabTests_fr{id name{fr}finance{Bcode}reference{Mnemonic}specimen{nature tubeColor anticoagulant numberoftube volumemin}}}`
+  },
+  path: "tests"
+});
+
+export const labTestsFetching = () => store.dispatch({
+  type: LabTestActions.LAB_TESTS_FR_FETCH,
+  payload: {
+    query: `query{AllLabTests_fr{id name{fr}finance{Bcode}reference{Mnemonic}specimen{nature tubeColor anticoagulant numberoftube volumemin}}}`
+  },
+  path: "tests"
+});
 export class Labtests {
   private token: string | null = localStorage.getItem("TTUID");
 

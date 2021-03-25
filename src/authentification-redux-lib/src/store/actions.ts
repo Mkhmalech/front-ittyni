@@ -14,4 +14,11 @@ export enum AuthActions{
     AUTH_TOKEN_NOT_EXIST                = '@@auth/AUTH_TOKEN_NOT_EXIST',    
     AUTH_TOKEN_VERIFY_TRUE              = '@@auth/AUTH_TOKEN_VERIFY_TRUE',
     AUTH_TOKEN_VERIFY_FALSE             = '@@auth/AUTH_TOKEN_VERIFY_FALSE',
+    
+    /**
+     * verify ifLogged
+     */
+    AUTH_BY_GOOGLE                  = '@@auth/AUTH_BY_GOOGLE',
+    AUTH_BY_GOOGLE_ERROR                  = '@@auth/AUTH_BY_GOOGLE_ERROR',
+    AUTH_BY_GOOGLE_SUCCESS                  = '@@auth/AUTH_BY_GOOGLE_SUCCESS',
 }

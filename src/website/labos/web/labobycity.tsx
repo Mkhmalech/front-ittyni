@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { LaboFetchByCity, LaboListTwentyByCity, Labos } from '../controller/Labos';
-import * as List from '../../../../ui-ittyni/src/list/list'
+import * as ctrl from '../controller/Labos';
+import * as List from '../../../ui-ittyni/src/list/list'
 import { Link, useParams } from 'react-router-dom';
-import { TestLink } from '../../../../ui-ittyni/src/links/Links';
+import { TestLink } from '../../../ui-ittyni/src/links/Links';
 import Helmet from 'react-helmet';
 import { useSelector } from 'react-redux';
 
@@ -13,8 +13,8 @@ export const LabosLisitingByCity: React.FunctionComponent<any> = () => {
   const {listByCity} = useSelector(({labState}:any) => labState.labo);
 
   React.useEffect(()=>{
-    LaboListTwentyByCity(city);
-  },[])
+    ctrl.LaboListTwentyByCity(city);
+  },[city])
   return (
     <>
       <Helmet>
@@ -25,7 +25,7 @@ export const LabosLisitingByCity: React.FunctionComponent<any> = () => {
       <List.Container>
         <h1>Listes des laboratoires medicales sur {city}</h1>
         {listByCity && listByCity.length > 0 &&
-          listByCity.map((labo: LaboWeb) =>
+          listByCity.map((labo: any) =>
             <List.Item key={labo.account ? labo.account.name : '-'}>
               <List.ItemAbbr>
 
@@ -66,13 +66,12 @@ export const LabosLisitingByCity: React.FunctionComponent<any> = () => {
           <div>loading.....</div>
         }
         <button 
-        onClick={e=> LaboFetchByCity(city)}
+        onClick={e=> ctrl.LaboFetchByCity(city)}
         style={{
           width: "100%",
           padding: "5px",
           backgroundColor: "white",
-          marginBottom: "5px",
-          cursor : 'pointer'
+          marginBottom: "5px"
         }}
       >Afficher Tout</button>
       </List.Container>
