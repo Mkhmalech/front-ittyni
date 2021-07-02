@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { SearchIcon, SearchInput } from "../../common/Search"
+import { SearchIcon, SearchInput } from "../../../lab-ittyni/src/common/Search"
 
 export const LaboSearch = () => {
 

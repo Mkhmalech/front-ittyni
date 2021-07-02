@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ctrl from '../controller/Labos';
-import * as List from '../../../ui-ittyni/src/list/list'
+import * as ui from '../../../ui-ittyni/src'
 import { Link, useParams } from 'react-router-dom';
 import { TestLink } from '../../../ui-ittyni/src/links/Links';
 import Helmet from 'react-helmet';
@@ -22,25 +22,25 @@ export const LabosLisitingByCity: React.FunctionComponent<any> = () => {
         <meta name="keywords" content="Liste laboratoires medicales maroc ville fes address tele fax" />
         <title>Listes des laboratoires medicales au maroc</title>
       </Helmet>
-      <List.Container>
+      <ui.Container>
         <h1>Listes des laboratoires medicales sur {city}</h1>
         {listByCity && listByCity.length > 0 &&
           listByCity.map((labo: any) =>
-            <List.Item key={labo.account ? labo.account.name : '-'}>
-              <List.ItemAbbr>
+            <ui.Item key={labo.account ? labo.account.name : '-'}>
+              <ui.ItemAbbr>
 
-              </List.ItemAbbr>
-              <List.ItemContent>
+              </ui.ItemAbbr>
+              <ui.ItemContent>
 
-                <List.ItemContentTitle>
+                <ui.ItemContentTitle>
                   <h2>
                     <TestLink to={`/annuaire/labm/maroc/${city}/${labo._id}`}>
                       {labo.account ? labo.account.name : '-'}
                     </TestLink>
                   </h2>
-                </List.ItemContentTitle>
+                </ui.ItemContentTitle>
 
-                <List.ItemContentDescription>
+                <ui.ItemContentDescription>
                   <h3>
                     {labo.contact ? 
                       <>
@@ -49,18 +49,19 @@ export const LabosLisitingByCity: React.FunctionComponent<any> = () => {
                       : 
                       '-'} 
                   </h3>
-                </List.ItemContentDescription>
+                </ui.ItemContentDescription>
 
-              </List.ItemContent>
+              </ui.ItemContent>
 
-              <List.ItemOptions>
-                <List.ItemOptionsData>
+              <ui.ItemOptions>
+                <ui.ItemOptionsData>
                   <h3>
-                    {labo.contact ? labo.contact.tele.fix[0] : '-'}
+                    <ui.Badge>{labo.contact ? labo.contact.tele.fix[0] : '-'}</ui.Badge>
                   </h3>
-                </List.ItemOptionsData>
-              </List.ItemOptions>
-            </List.Item>
+                  <ui.Views><span><i className="far fa-eye"/>{labo.views?labo.views:0}</span></ui.Views>
+                </ui.ItemOptionsData>
+              </ui.ItemOptions>
+            </ui.Item>
           )}
         {!listByCity &&
           <div>loading.....</div>
@@ -74,7 +75,7 @@ export const LabosLisitingByCity: React.FunctionComponent<any> = () => {
           marginBottom: "5px"
         }}
       >Afficher Tout</button>
-      </List.Container>
+      </ui.Container>
     </>
   )
 };

@@ -13,3 +13,12 @@ export const Badge = styled('span')<{bgcolor? : string}>`
     background-color: ${({bgcolor})=>bgcolor? bgcolor : '#17a2b8'} !important;
     margin : 5px 0 0 5px;
 `
+export const Views = styled('div')`
+    margin : 5px 0;
+    span {
+        i {
+            padding: 0 10px 0 0;
+            color: blue;
+        }
+    }
+`

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useParams } from 'react-router-dom';
-import { Article, Badge } from '../../../ui-ittyni/src'
+import * as ui from '../../../ui-ittyni/src'
 import { Ico } from '../../../react-icons-sc/src/ico';
 import { microscop } from '../../../assets/icons/microscop'
 import { Helmet } from 'react-helmet';
@@ -44,122 +44,36 @@ export const LaboDetails: React.FC<any> = () => {
                 `} />
                 <title>{`Laboratoire ${Details.account.name} - ${Details.contact.address.city}`}</title>
             </Helmet>
-            <Article.Container>
-                <Article.Header>
-                    <Article.HeaderContainer>
-                        <Article.HeaderAvatar>
-                            <Article.HeaderAvatarIcon>
+            <ui.Article.Container>
+                <ui.Article.Header>
+                    <ui.Article.HeaderContainer>
+                        <ui.Article.HeaderAvatar>
+                            <ui.Article.HeaderAvatarIcon>
                                 <Ico
                                     {...microscop}
                                     width="140"
                                     height="140"
                                 />
-                            </Article.HeaderAvatarIcon>
-                        </Article.HeaderAvatar>
-                        <Article.HeaderAbstract>
-                            <Article.HeaderTitle>{Details.account.name}</Article.HeaderTitle>
-                            <Article.HeaderSubTitle>Laboratoire d'Analyse Medicales</Article.HeaderSubTitle>
-                            <Article.HeaderMiddle>
+                            </ui.Article.HeaderAvatarIcon>
+                        </ui.Article.HeaderAvatar>
+                        <ui.Article.HeaderAbstract>
+                            <ui.Article.HeaderTitle>{Details.account.name}</ui.Article.HeaderTitle>
+                            <ui.Article.HeaderSubTitle>Laboratoire d'Analyse Medicales</ui.Article.HeaderSubTitle>
+                            <ui.Article.HeaderMiddle>
                                 {Details.contact.address.street} - {Details.contact.address.city}
-                            </Article.HeaderMiddle>
-                            <Article.HeaderFoot>
-                                <Article.HeaderFootAssurance>
-                                    <p>tele : <Badge>{Details.contact.tele.fix[0]}</Badge></p>
-                                </Article.HeaderFootAssurance>
-                            </Article.HeaderFoot>
-                        </Article.HeaderAbstract>
-                    </Article.HeaderContainer>
-                </Article.Header>
-            </Article.Container>
+                            </ui.Article.HeaderMiddle>
+                            <ui.Article.HeaderFoot>
+                                <ui.Article.HeaderFootAssurance>
+                                    <p>
+                                        tele : <ui.Badge>{Details.contact.tele.fix[0]}</ui.Badge>
+                                        <ui.Badge bgcolor="green"><i className="far fa-eye" style={{background: "inherit"}}></i> : {Details.views?Details.views:0}</ui.Badge>
+                                    </p>
+                                </ui.Article.HeaderFootAssurance>
+                            </ui.Article.HeaderFoot>
+                        </ui.Article.HeaderAbstract>
+                    </ui.Article.HeaderContainer>
+                </ui.Article.Header>
+            </ui.Article.Container>
         </>}
     </>)
-}
-
-
-interface ArticleDetailH1 {
-    h1: string,
-    detail: string | ArticleDetailH2[]
-}
-interface ArticleDetailH2 {
-    h2: string
-    p: string
-}
-const details: ArticleDetailH1[] = [
-    {
-        h1: 'Presentation',
-        detail: ''
-    },
-    {
-        h1: 'Departement',
-        detail: [
-            {
-                h2: 'Biochimie',
-                p: ''
-            },
-            {
-                h2: 'Bacteriologie',
-                p: ''
-            },
-            {
-                h2: 'Serologie',
-                p: ''
-            },
-            {
-                h2: 'Genetique',
-                p: ''
-            }
-        ]
-    },
-    {
-        h1: 'Service',
-        detail: [
-            {
-                h2: 'Prelevement a domicile',
-                p: ''
-            }
-        ]
-    },
-    {
-        h1: 'Convention',
-        detail: [
-            {
-                h2: 'Cnops',
-                p: ''
-            },
-            {
-                h2: 'Cmim',
-                p: ''
-            },
-        ]
-    },
-]
-
-const ArticleComponent = (
-    articleDetail: ArticleDetailH1[]
-) => {
-
-    return articleDetail.map((article: ArticleDetailH1) => (
-        <Article.Paragraphe key={article.h1}>
-            <Article.ParagraphTitle>{article.h1}</Article.ParagraphTitle>
-            {
-
-                typeof article.detail === 'string' ?
-                    <Article.ParagraphText>
-                        {article.detail}
-                    </Article.ParagraphText>
-                    :
-                    article.detail.map((detail) => (
-                        <div key={detail.h2}>
-                            <Article.ParagraphSubTitle>{detail.h2}</Article.ParagraphSubTitle>
-                            <Article.ParagraphText>
-                                {detail.p}
-                            </Article.ParagraphText>
-                        </div>
-                    ))
-
-            }
-
-        </Article.Paragraphe>
-    ))
-
 }

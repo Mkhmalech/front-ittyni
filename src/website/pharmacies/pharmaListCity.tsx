@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 import { pharmafetchAllCity, pharmafetchByCity } from './store/controller';
-import * as List from '../../ui-ittyni/src/list/list'
+import * as ui from '../../ui-ittyni/src'
 import { Link } from 'react-router-dom';
 import Helmet from 'react-helmet';
 
@@ -22,24 +22,24 @@ export const PharmaciesByCity: React.FC<any> = () => {
         <meta name="keywords" content="Liste laboratoires medicales pharmacies medicament prix tarif maroc ville fes address tele fax" />
         <title>Liste des pharmacies ville {city}</title>
       </Helmet>
-      <List.Container>
+      <ui.Container>
         <h1>Liste des pharmacies ville {city}</h1>
         {pharmalist && pharmalist.map((p: any) =>
-          <List.Item key={p.account ? p.account.name : '-'}>
-            <List.ItemAbbr>
+          <ui.Item key={p.account ? p.account.name : '-'}>
+            <ui.ItemAbbr>
 
-            </List.ItemAbbr>
-            <List.ItemContent>
+            </ui.ItemAbbr>
+            <ui.ItemContent>
 
-              <List.ItemContentTitle>
+              <ui.ItemContentTitle>
                 <h2>
                   <Link to={`/annuaire/pharmacie/maroc/${city}/${p._id}`}>
                     {p.account ? p.account.name : '-'}
                   </Link>
                 </h2>
-              </List.ItemContentTitle>
+              </ui.ItemContentTitle>
 
-              <List.ItemContentDescription>
+              <ui.ItemContentDescription>
                 <h3>
                   {p.contact ?
                     <>
@@ -48,21 +48,22 @@ export const PharmaciesByCity: React.FC<any> = () => {
                     :
                     '-'}
                 </h3>
-              </List.ItemContentDescription>
+              </ui.ItemContentDescription>
 
-            </List.ItemContent>
+            </ui.ItemContent>
 
-            <List.ItemOptions>
-              <List.ItemOptionsData>
+            <ui.ItemOptions>
+              <ui.ItemOptionsData>
                 <h3>
-                  {p.contact ? p.contact.tele.fix[0] : '-'}
+                  <ui.Badge>{p.contact ? p.contact.tele.fix[0] : '-'}</ui.Badge>
                 </h3>
-              </List.ItemOptionsData>
-            </List.ItemOptions>
-          </List.Item>
+                <ui.Views><span><i className="far fa-eye"/>{p.views?p.views:0}</span></ui.Views>
+              </ui.ItemOptionsData>
+            </ui.ItemOptions>
+          </ui.Item>
         )}
         {!pharmalist && <div>Loading....</div>}
-      </List.Container>
+      </ui.Container>
       <button 
         onClick={e=> pharmafetchAllCity(city)}
         style={{

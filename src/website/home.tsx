@@ -25,8 +25,10 @@ import { Cabinets } from './cabinets/cabinetListCities';
 import { CabinetsByCity } from './cabinets/cabinetListCity';
 import { CabinetDetails } from './cabinets/cabinetDetails';
 import { useGoogleOneTapLogin } from 'react-google-one-tap-login';
+import {Profile} from './user/profile'
 // import controller
 import * as ctrl from '../store/controller'
+import * as ui from '../ui-ittyni/src/index'
 
 const ButtonConnect: React.FC<any> = () => {
 
@@ -40,11 +42,24 @@ const ButtonConnect: React.FC<any> = () => {
 
   return <><span><i className="fas fa-user" /> </span> <span className="text">Connecter</span></>
 }
+const UserButton : React.FC<any> = ({fname, lname, picture}) =>{
+
+  return( <div style={{display: "grid"}}>
+    <div style={{display: "grid", gridTemplateColumns : "auto auto", alignItems:"center"}}>
+      <span><img src={picture} style={{ height: '28px', width: '28px' }} /></span>
+      <span className="text"> {fname} {lname}</span></div>
+    <div><ui.ProfileProgress max="100" value="20" >
+      <div>
+        <span style={{width: "60%"}}>60%</span>
+      </div>
+    </ui.ProfileProgress></div>
+  </div>)
+}
 export const Home: React.FunctionComponent<any> = () => {
   // get auth status
   const { isAuth, email, fname, lname, picture } = useSelector(({ Auth }: any) => Auth.login)
 
-
+  // before all
   React.useEffect(() => {
     ctrl.isLogged()
   }, []);
@@ -81,14 +96,16 @@ export const Home: React.FunctionComponent<any> = () => {
                   <span className="text">Annuaire</span>
                 </LoginLink>
               </>} />
-            <LoginLink to={`/${email ? email.split('@')[0] : "#"}`}>
+            <LoginLink to={`/${email ? email.split('@')[0]+'/profile' : "#"}`}>
               {!isAuth && (localStorage.getItem('TTUID') === null) && <ButtonConnect />}
-              {isAuth && <><span><img src={picture} style={{ height: '28px', width: '28px' }} /></span><span className="text"> {fname} {lname}</span></>}
+              {isAuth && <UserButton fname={fname} lname={lname} picture={picture} />}
             </LoginLink>
           </Header>
         </Wrapper.Header>
         <Wrapper.Main>
           <Wrapper.MainContent>
+            {/* ************************************ user area **************************************/}
+            <Route path={"/:user/profile"} component={Profile} exact />
             {/* ************************************ List des actes de ngap **************************************/}
             {/** lab procedure list page */}
             <Route path={"/annuaire/cabinet/maroc/:city/:cabinet"} component={CabinetDetails} exact />
@@ -134,7 +151,7 @@ export const Home: React.FunctionComponent<any> = () => {
             {/* ************** Need to be updated by abbr test to optimize SEO ************************* */}
             {/** lab procedure details */}
             <Route path={'/actes-tarifs/nomenclature-actes-biologie-médicale/:test'}
-              component={() => <labRoutes.LabTests.labTestDetail.component />} exact />
+              component={labRoutes.LabTests.labTestDetail.component} exact />
             {/** lab procedure details */}
             <Route path={labRoutes.LabTests.labTestDetail.path}
               component={() => {

@@ -30,6 +30,7 @@ const Main: React.FC<MainProps> = ({ store, history }) => {
                         <Switch>
                             <Route path={'/annuaire/*'} component={Home} />
                             <Route path={'/actes-tarifs/*'} component={Home} />
+                            <Route path='/:user/*' component={Home} />
                             <Redirect from='/*' to={'/actes-tarifs/*'} />
                         </Switch>
                     </Router>
