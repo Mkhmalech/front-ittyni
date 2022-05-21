@@ -3,9 +3,9 @@ import { AuthActions } from '../store/actions';
 
 
 /**
-     * fetch user and sign in 
-     * to @ittyni
-     */
+ * fetch user and sign in 
+ * to @ittyni
+ */
 export const fetchUser = (email : string, password:string) => store.dispatch({
     type : AuthActions.AUTH_LOGIN_FETCH_USER,
     payload : {

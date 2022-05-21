@@ -40,8 +40,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "linux": "export PORT=3000 && GENERATE_SOURCEMAP=false react-scripts build && serve -s build",
-    "win": "set PORT=3000 && set \"GENERATE_SOURCEMAP=false\" && react-scripts build && serve -s build",
+    "linux": "export PORT=6000 && GENERATE_SOURCEMAP=false react-scripts build && serve -s build",
+    "win": "set PORT=6000 && set \"GENERATE_SOURCEMAP=false\" && react-scripts build && serve -s build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },

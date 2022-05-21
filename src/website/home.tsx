@@ -25,7 +25,7 @@ import { Cabinets } from './cabinets/cabinetListCities';
 import { CabinetsByCity } from './cabinets/cabinetListCity';
 import { CabinetDetails } from './cabinets/cabinetDetails';
 import { useGoogleOneTapLogin } from 'react-google-one-tap-login';
-import {Profile} from './user/profile'
+// import {Profile} from './user/profile'
 // import controller
 import * as ctrl from '../store/controller'
 import * as ui from '../ui-ittyni/src/index'
@@ -48,11 +48,11 @@ const UserButton : React.FC<any> = ({fname, lname, picture}) =>{
     <div style={{display: "grid", gridTemplateColumns : "auto auto", alignItems:"center"}}>
       <span><img src={picture} style={{ height: '28px', width: '28px' }} /></span>
       <span className="text"> {fname} {lname}</span></div>
-    <div><ui.ProfileProgress max="100" value="20" >
+    {/* <div><ui.ProfileProgress max="100" value="20" >
       <div>
         <span style={{width: "60%"}}>60%</span>
       </div>
-    </ui.ProfileProgress></div>
+    </ui.ProfileProgress></div> */}
   </div>)
 }
 export const Home: React.FunctionComponent<any> = () => {
@@ -105,7 +105,7 @@ export const Home: React.FunctionComponent<any> = () => {
         <Wrapper.Main>
           <Wrapper.MainContent>
             {/* ************************************ user area **************************************/}
-            <Route path={"/:user/profile"} component={Profile} exact />
+            {/* <Route path={"/:user/profile"} component={Profile} exact /> */}
             {/* ************************************ List des actes de ngap **************************************/}
             {/** lab procedure list page */}
             <Route path={"/annuaire/cabinet/maroc/:city/:cabinet"} component={CabinetDetails} exact />
@@ -183,18 +183,12 @@ export const Home: React.FunctionComponent<any> = () => {
             <Route path="/actes-tarifs/" render={MedicalProcedures} exact />
 
           </Wrapper.MainContent>
-          <Wrapper.MainSide>
-            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 
-            <ins className="adsbygoogle"
-              style={{ display: "block" }}
-              data-ad-client="ca-pub-3077290275391601"
-              data-ad-slot="3241538568"
-              data-ad-format="auto"
-              data-full-width-responsive="true"></ins>
-            <script>
-              (adsbygoogle = window.adsbygoogle || []).push({ });
-            </script>
+          <Wrapper.MainSide>
+            <iframe width="360" height="315" src="https://www.youtube.com/embed/uAug4IaKxu4" 
+              title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowFullScreen 
+            />
           </Wrapper.MainSide>
 
         </Wrapper.Main>

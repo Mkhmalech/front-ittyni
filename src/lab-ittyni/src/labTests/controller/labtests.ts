@@ -12,7 +12,14 @@ export const searchLabTests = (q:string)=>store.dispatch({
 export const fetchTwentyTests = () => store.dispatch({
   type: LabTestActions.LAB_TESTS_FR_FETCH_TWENTY,
   payload: {
-    query: `query{fetchTwentyLabTests_fr{id name{fr}finance{Bcode}reference{Mnemonic}specimen{nature tubeColor anticoagulant numberoftube volumemin}}}`
+    query: `query{fetchTwentyLabTests_fr{
+        _id
+        name{fr}
+        finance {Bcode}
+        reference {Mnemonic}
+        specimen{nature tubecolor anticoagulant numberoftube volumemin}
+      }
+    }`
   },
   path: "tests"
 });
@@ -20,7 +27,7 @@ export const fetchTwentyTests = () => store.dispatch({
 export const labTestsFetching = () => store.dispatch({
   type: LabTestActions.LAB_TESTS_FR_FETCH,
   payload: {
-    query: `query{AllLabTests_fr{id name{fr}finance{Bcode}reference{Mnemonic}specimen{nature tubeColor anticoagulant numberoftube volumemin}}}`
+    query: `query{AllLabTests_fr{_id name{fr}finance{Bcode}reference{Mnemonic}specimen{nature tubecolor anticoagulant numberoftube volumemin}}}`
   },
   path: "tests"
 });
@@ -73,7 +80,7 @@ export class Labtests {
     store.dispatch({
       type: LabTestActions.LAB_TESTS_FR_FETCH,
       payload: {
-        query: `query{AllLabTests_fr{id name{fr}finance{Bcode}reference{Mnemonic}specimen{nature tubeColor anticoagulant numberoftube volumemin}}}`
+        query: `query{AllLabTests_fr{_id name{fr}finance{Bcode}reference{Mnemonic}specimen{nature tubecolor anticoagulant numberoftube volumemin}}}`
       },
       path: "tests"
     });
@@ -81,7 +88,14 @@ export class Labtests {
     store.dispatch({
       type: LabTestActions.LAB_TESTS_FR_FETCH_TWENTY,
       payload: {
-        query: `query{fetchTwentyLabTests_fr{id name{fr}finance{Bcode}reference{Mnemonic}specimen{nature tubeColor anticoagulant numberoftube volumemin}}}`
+        query: `query{fetchTwentyLabTests_fr{
+          _id
+          name{fr}
+          finance {Bcode}
+          reference {Mnemonic}
+          specimen{nature tubecolor anticoagulant numberoftube volumemin}
+        }
+      }`
       },
       path: "tests"
     });

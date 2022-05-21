@@ -4,7 +4,7 @@ import { LabTestActions } from './actions';
 import { AnyAction } from 'redux';
 
 
-function* tryFetching(path: string, payload : string, actionWhenFailed : string, actionWhenSuccesses : string){
+function* tryFetching(path: string, payload : string, actionWhenFailed : string, actionWhenSuccesses : string):any{
     try{
         const res = yield call(config.callApi, 'post', config.api, path, payload );
 
@@ -24,12 +24,12 @@ function* tryFetching(path: string, payload : string, actionWhenFailed : string,
         }
 
     } catch(e) {
-        throw new Error(e); 
+        throw new Error(`${e}`); 
     }
 }
 
 
-function* LabTestFrListFetch({path, payload} : any){
+function* LabTestFrListFetch({path, payload} : any):any{
 
     try{
 
@@ -53,13 +53,13 @@ function* LabTestFrListFetch({path, payload} : any){
         }
 
     } catch(e) {
-        throw new Error(e); 
+        throw new Error(`${e}`); 
     }
 }
 /**
  * 
  */
-function* LabTestsFrSearch({path, payload} : any){
+function* LabTestsFrSearch({path, payload} : any):any{
     try{
 
         // yield put({type : CatalogActions.CATALOG_LIST_ALL_TESTS_FROM_API_FETCHING});
@@ -82,14 +82,14 @@ function* LabTestsFrSearch({path, payload} : any){
         }
 
     } catch(e) {
-        throw new Error(e); 
+        throw new Error(`${e}`); 
     }
 }
 
 /**
  * labtestsaga fetch all tests
  */
-function* LabTestsFetchAll({path, payload} : AnyAction){
+function* LabTestsFetchAll({path, payload} : AnyAction):any{
     yield tryFetching(
         path, 
         payload,

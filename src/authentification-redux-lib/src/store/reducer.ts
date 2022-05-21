@@ -21,6 +21,7 @@ const loginReducer: Reducer = (state = initialLogin, action: AnyAction) => {
                 picture: action.payload.users.signupWithGoogle.picture,
             };
         case AuthActions.AUTH_TOKEN_NOT_EXIST:
+            
             return {
                 ...state,
                 isAuth: false

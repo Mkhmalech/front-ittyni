@@ -1,7 +1,8 @@
 import { call, put } from "redux-saga/effects";
 
 // export const api = 'https://api.ittyni.com';
-export const api = 'http://localhost:8080';
+// export const api = 'http://localhost:8080';
+export const api = 'http://api.ittyni.live';
 
 export async function callApi(method: string, url: string, path: string, data?: any) {
     const res = await fetch(`${url}/${path}`, {
@@ -16,12 +17,12 @@ export async function callApi(method: string, url: string, path: string, data?: 
     return res.json()
   }
 
-export function* tryFetching(path: string, payload : string, actionWhenFailed : string, actionWhenSuccesses : string, loadingAction? : string){
+export function* tryFetching(path: string, payload : string, actionWhenFailed : string, actionWhenSuccesses : string, loadingAction? : string):any{
 
    if(loadingAction) yield put({type : loadingAction})
 
     try{
-        const res : any = yield call(callApi, 'post', api, path, payload );
+        const res = yield call(callApi, 'post', api, path, payload );
 
         if(res && res.errors && res.errors[0].message != 'null') {
             yield put({
@@ -39,6 +40,6 @@ export function* tryFetching(path: string, payload : string, actionWhenFailed : 
         }
 
     } catch(e) {
-        throw new Error(e); 
+        throw new Error(`${e}`); 
     }
 }
