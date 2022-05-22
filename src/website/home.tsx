@@ -75,11 +75,11 @@ export const Home: React.FunctionComponent<any> = () => {
             {/** Lab labos details */}
             <Route path={'/actes-tarifs/*'}
               component={() => <>
-                <LoginLink to={`/actes-tarifs/`} bg={true}>
+                <LoginLink to={`/actes-tarifs/`} bg>
                   <span><i className="fas fa-book-medical" /></span>
                   <span className="text">Actes et Tarifs</span>
                 </LoginLink>
-                <LoginLink to={`/annuaire/`} bg={false}>
+                <LoginLink to={`/annuaire/`} >
                   <span><i className="fas fa-address-book" /></span>
                   <span className="text">Annuaire</span>
                 </LoginLink>
@@ -87,19 +87,19 @@ export const Home: React.FunctionComponent<any> = () => {
             {/** Lab labos details */}
             <Route path={'/annuaire/*'}
               component={() => <>
-                <LoginLink to={`/actes-tarifs/`} bg={false}>
+                <LoginLink to={`/actes-tarifs/`} >
                   <span><i className="fas fa-book-medical" /></span>
                   <span className="text">Actes et Tarifs</span>
                 </LoginLink>
-                <LoginLink to={`/annuaire/`} bg={true}>
+                <LoginLink to={`/annuaire/`} bg>
                   <span><i className="fas fa-address-book" /></span>
                   <span className="text">Annuaire</span>
                 </LoginLink>
               </>} />
-            <LoginLink to={`/${email ? email.split('@')[0]+'/profile' : "#"}`}>
+            {/* <LoginLink to={`/${email ? email.split('@')[0]+'/profile' : "#"}`}>
               {!isAuth && (localStorage.getItem('TTUID') === null) && <ButtonConnect />}
               {isAuth && <UserButton fname={fname} lname={lname} picture={picture} />}
-            </LoginLink>
+            </LoginLink> */}
           </Header>
         </Wrapper.Header>
         <Wrapper.Main>
