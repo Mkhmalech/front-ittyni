@@ -1,0 +1,36 @@
+name: Test Feature before Merging to Develop
+on:
+  pull_request:
+    branches: [develop]
+jobs:
+  Start_Unit_Tests:
+    name: Pass Unit tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+      - name: Set up node
+        uses: actions/setup-node@v1
+      - name: Install dependencies
+        run: npm install
+      - name: Start unit tests
+        run: npm run test
+      # - name: generate coverage report
+      #   uses: ziishaned/jest-reporter-action@v0.0.1
+      #   with:
+      #     # github-token: ${{ secrets.GITHUB_TOKEN }}
+      #     test-command: "npm test --coverage"
+
+  # Start_BDD_Testing:
+  #   name: Start BDD Testing
+  #   needs: Start_Unit_Tests
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Check out code
+  #       uses: actions/checkout@v3
+  #     - name: Setup node
+  #       uses: actions/setup-node@v1
+  #     - name: Install dependencies
+  #       run: npm install
+  #     - name: Run Bdd testing
+  #       run : npx codeceptjs run
