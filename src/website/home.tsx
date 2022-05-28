@@ -96,10 +96,10 @@ export const Home: React.FunctionComponent<any> = () => {
                   <span className="text">Annuaire</span>
                 </LoginLink>
               </>} />
-            {/* <LoginLink to={`/${email ? email.split('@')[0]+'/profile' : "#"}`}>
+            <LoginLink to={`/${email ? email.split('@')[0]+'/profile' : "#"}`}>
               {!isAuth && (localStorage.getItem('TTUID') === null) && <ButtonConnect />}
               {isAuth && <UserButton fname={fname} lname={lname} picture={picture} />}
-            </LoginLink> */}
+            </LoginLink>
           </Header>
         </Wrapper.Header>
         <Wrapper.Main>
