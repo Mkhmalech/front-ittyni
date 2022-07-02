@@ -12,13 +12,13 @@ const loginReducer: Reducer = (state = initialLogin, action: AnyAction) => {
                 ...state, isAuth: true, username: action.payload.username, userId: action.payload.userId
             };
         case AuthActions.AUTH_BY_GOOGLE_SUCCESS:
-            localStorage.setItem('TTUID', action.payload.users.signupWithGoogle.token);
+            localStorage.setItem('TTUID', action.payload.signupWithGoogle.token);
             return {
                 ...state, isAuth: true,
-                email: action.payload.users.signupWithGoogle.email,
-                fname: action.payload.users.signupWithGoogle.firstName,
-                lname: action.payload.users.signupWithGoogle.lastName,
-                picture: action.payload.users.signupWithGoogle.picture,
+                email: action.payload.signupWithGoogle.email,
+                fname: action.payload.signupWithGoogle.firstName,
+                lname: action.payload.signupWithGoogle.lastName,
+                picture: action.payload.signupWithGoogle.picture,
             };
         case AuthActions.AUTH_TOKEN_NOT_EXIST:
             
