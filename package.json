@@ -41,9 +41,12 @@
   "scripts": {
     "start": "react-scripts start",
     "linux": "export PORT=6000 && GENERATE_SOURCEMAP=false react-scripts build && serve -s build",
-    "win": "set PORT=6000 && set \"GENERATE_SOURCEMAP=false\" && react-scripts build && serve -s build",
+    "win": "npm run build:win && serve -s build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "build:win" : " set \"GENERATE_SOURCEMAP=false\" && set PORT=3006 && react-scripts build",
+    "build:linux" : "export PORT=6000 && set \"GENERATE_SOURCEMAP=false\" && react-scripts build",
+    "clean": "rm -rf build"
   },
   "browserslist": [
     ">0.2%",
