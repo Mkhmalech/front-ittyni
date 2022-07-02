@@ -1,0 +1,8 @@
+FROM node:16-alpine3.14
+WORKDIR /tt
+# copy build folder
+COPY ./build ./build
+# install serve
+RUN npm install -g serve
+# run application
+CMD ["serve", "-s", "build"]
