@@ -42,9 +42,7 @@ export const AuthByGoogle = ({given_name, email, picture, family_name} : any) =>
     path : 'users',
     payload : {
         query:`mutation{
-            users{
               signupWithGoogle(email:"${email}", lname : "${given_name}",fname:"${family_name}", picture:"${picture}"){token email picture firstName lastName }
-            }
           }`
     }
 })
