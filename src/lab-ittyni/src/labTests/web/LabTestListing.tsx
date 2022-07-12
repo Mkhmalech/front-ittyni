@@ -27,6 +27,7 @@ const LabTestsListing: React.FC<ILabTestsListingProps> = () => {
         <meta name="keywords" content="" />
       </Helmet>
       {labtests && <ListComponent listTitle="prix des analyse aux maroc" data={labtests.map((labtest:any) =>({
+          _id : labtest&&labtest._id,
           abbr: labtest.reference ? labtest.reference.Mnemonic : '-',
           title: labtest.name ? labtest.name.fr ? labtest.name.fr : '-' : '-',
           description: 'this is a description',

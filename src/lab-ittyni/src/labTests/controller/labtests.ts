@@ -1,12 +1,12 @@
 import { LabTestActions } from "../store/actions";
 import { store } from "../../../../index";
 
-export const searchLabTests = (q:string)=>store.dispatch({
+export const searchLabTests = (q: string) => store.dispatch({
   type: LabTestActions.LAB_TESTS_FR_SEARCH_BY_Name,
-      payload: {
-        query: `query{LabTestFrenchSearch(query:"${q}"){id name{fr} reference{Mnemonic}} }`
-      },
-      path: "tests"
+  payload: {
+    query: `query{LabTestFrenchSearch(query:"${q}"){id name{fr} reference{Mnemonic}} }`
+  },
+  path: "tests"
 })
 
 export const fetchTwentyTests = () => store.dispatch({
@@ -30,6 +30,17 @@ export const labTestsFetching = () => store.dispatch({
     query: `query{AllLabTests_fr{_id name{fr}finance{Bcode}reference{Mnemonic}specimen{nature tubecolor anticoagulant numberoftube volumemin}}}`
   },
   path: "tests"
+});
+export const labTestDetailsById = (id: string) => store.dispatch({
+  type: LabTestActions.LAB_TESTS_DETAILS_BY_ID,
+  payload: {
+    query: `query{LabTestFrenchById(id:"${id}"){
+      _id name{fr}finance{_id code value description Bcode country price}reference{Mnemonic}specimen{nature tubecolor anticoagulant numberoftube volumemin}
+      updates{_id}description{overview why how what when}departements{name{fr}}parameter group
+    }}`
+  },
+  path: "tests",
+  mw:"LabTestFrenchById"
 });
 export class Labtests {
   private token: string | null = localStorage.getItem("TTUID");
@@ -65,7 +76,7 @@ export class Labtests {
   private LabTestSampleCollectorQuantity?: Number;
   private LabTestSample?: LabTestSample;
 
-  constructor() {}
+  constructor() { }
 
   labTestAllList = () =>
     store.dispatch({
@@ -133,13 +144,14 @@ export class Labtests {
       path: "tests"
     });
 
-    filterTestsList =(name : LabTestNameEn) => store.dispatch({
-      type : LabTestActions.LAB_TESTS_FILTER_BY_EN_NAME,
-      payload : {
-        query : `query{nameEnFilter(en: "${name}"){name{en fr}reference{Mnemonic} finance{Bcode}}}`
-      },
-      path:'tests'
-    })
+  filterTestsList = (name: LabTestNameEn) => store.dispatch({
+    type: LabTestActions.LAB_TESTS_FILTER_BY_EN_NAME,
+    payload: {
+      query: `query{nameEnFilter(en: "${name}"){name{en fr}reference{Mnemonic} finance{Bcode}}}`
+    },
+    path: 'tests'
+  })
+
   /******************************
    * Update TestLab Parameters
    *****************************/
@@ -167,7 +179,7 @@ export class Labtests {
   public setCPTCode = (cpt: string) => (this.LabTestReferenceCpt = Number(cpt));
   public setMnemonic = (mnemonic: string) =>
     (this.LabTestReferenceMnemonic = mnemonic);
-  public getreference = () => {};
+  public getreference = () => { };
 
   /**************************
    * Update Classification
@@ -192,11 +204,11 @@ export class Labtests {
   public setSampleVolumeMin = (volMin: String) => {
     this.LabTestSampleVolumeMin = Number(volMin);
   };
-  public setSampleStabilityTemperature = () => {};
-  public setSampleStabilityPeriod = () => {};
-  public setSampleTransportTemperature = () => {};
-  public setSampleTransportPeriod = () => {};
-  public setSampleCollectorAnticoagulant = () => {};
+  public setSampleStabilityTemperature = () => { };
+  public setSampleStabilityPeriod = () => { };
+  public setSampleTransportTemperature = () => { };
+  public setSampleTransportPeriod = () => { };
+  public setSampleCollectorAnticoagulant = () => { };
 
   public getSampleCollectorColor = () =>
     console.log(this.LabTestSampleCollectorCollor);
@@ -204,7 +216,7 @@ export class Labtests {
   // request update to server
 
   // update Names
-  public dispatchLabTestNamesUpdate = () => {}; // this.dispatch(action(dispatchLabTestNamesUpdate, Names))
+  public dispatchLabTestNamesUpdate = () => { }; // this.dispatch(action(dispatchLabTestNamesUpdate, Names))
   // update Classification
 
   // update Finance
@@ -212,7 +224,7 @@ export class Labtests {
   // update pre analytic
 
   // user change many fields and want to update all
-  public dispatchLabTestAllUpdate = () => {}; // this.dispatch(action(dispatchLabTestAllUpdate, LabTestUpdate))
+  public dispatchLabTestAllUpdate = () => { }; // this.dispatch(action(dispatchLabTestAllUpdate, LabTestUpdate))
 
   //dispatches function
 
@@ -236,19 +248,16 @@ export class Labtests {
                   Bcode : ${this.LabTestFinanceBCode}
                 },                
                 preAnalytics : {
-                    sampleType :["${
-                      this.LabTestSampleType
-                        ? this.LabTestSampleType.join('","')
-                        : ""
-                    }"],
-                    sampleCollectorColor : ["${
-                      this.LabTestSampleCollectorCollor
-                        ? this.LabTestSampleCollectorCollor.join('","')
-                        : ""
-                    }"],
-                    SampleCollectorQuantity : ${
-                      this.LabTestSampleCollectorQuantity
-                    },
+                    sampleType :["${this.LabTestSampleType
+            ? this.LabTestSampleType.join('","')
+            : ""
+          }"],
+                    sampleCollectorColor : ["${this.LabTestSampleCollectorCollor
+            ? this.LabTestSampleCollectorCollor.join('","')
+            : ""
+          }"],
+                    SampleCollectorQuantity : ${this.LabTestSampleCollectorQuantity
+          },
                     sampleVolumeMin : ${this.LabTestSampleVolumeMin}
                 },
                 user :{

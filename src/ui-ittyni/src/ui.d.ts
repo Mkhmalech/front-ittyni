@@ -1,4 +1,5 @@
 interface ListData {
+    _id: string
     abbr: string
     title: string
     description: string

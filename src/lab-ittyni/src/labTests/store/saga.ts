@@ -4,94 +4,94 @@ import { LabTestActions } from './actions';
 import { AnyAction } from 'redux';
 
 
-function* tryFetching(path: string, payload : string, actionWhenFailed : string, actionWhenSuccesses : string):any{
-    try{
-        const res = yield call(config.callApi, 'post', config.api, path, payload );
+function* tryFetching(path: string, payload: string, actionWhenFailed: string, actionWhenSuccesses: string): any {
+    try {
+        const res = yield call(config.callApi, 'post', config.api, path, payload);
 
-        if(!res) {
+        if (!res) {
             yield put({
-                type: actionWhenFailed, 
-                error : res.errors[0].message
+                type: actionWhenFailed,
+                error: res.errors[0].message
             })
         }
 
         else {
 
             yield put({
-                type : actionWhenSuccesses, 
-                payload : res.data
+                type: actionWhenSuccesses,
+                payload: res.data
             })
         }
 
-    } catch(e) {
-        throw new Error(`${e}`); 
+    } catch (e) {
+        throw new Error(`${e}`);
     }
 }
 
 
-function* LabTestFrListFetch({path, payload} : any):any{
+function* LabTestFrListFetch({ path, payload }: any): any {
 
-    try{
+    try {
 
         // yield put({type : CatalogActions.CATALOG_LIST_ALL_TESTS_FROM_API_FETCHING});
 
-        const res = yield call(config.callApi, 'post', config.api, path, payload );
+        const res = yield call(config.callApi, 'post', config.api, path, payload);
 
-        if(!res) {
+        if (!res) {
             yield put({
-                type: "", 
-                error : res.errors[0].message
+                type: "",
+                error: res.errors[0].message
             })
         }
 
         else {
 
             yield put({
-                type : LabTestActions.LAB_TESTS_FR_FETCH_SUCCESS, 
-                payload : res.data.AllLabTests_fr
+                type: LabTestActions.LAB_TESTS_FR_FETCH_SUCCESS,
+                payload: res.data.AllLabTests_fr
             })
         }
 
-    } catch(e) {
-        throw new Error(`${e}`); 
+    } catch (e) {
+        throw new Error(`${e}`);
     }
 }
 /**
  * 
  */
-function* LabTestsFrSearch({path, payload} : any):any{
-    try{
+function* LabTestsFrSearch({ path, payload }: any): any {
+    try {
 
         // yield put({type : CatalogActions.CATALOG_LIST_ALL_TESTS_FROM_API_FETCHING});
 
-        const res = yield call(config.callApi, 'post', config.api, path, payload );
+        const res = yield call(config.callApi, 'post', config.api, path, payload);
 
-        if(!res) {
+        if (!res) {
             yield put({
-                type: LabTestActions.LAB_TESTS_FR_SEARCH_ERROR, 
-                error : res.errors[0].message
+                type: LabTestActions.LAB_TESTS_FR_SEARCH_ERROR,
+                error: res.errors[0].message
             })
         }
 
         else {
 
             yield put({
-                type : LabTestActions.LAB_TESTS_FR_SEARCH_SUCCESS, 
-                payload : res.data.LabTestFrenchSearch
+                type: LabTestActions.LAB_TESTS_FR_SEARCH_SUCCESS,
+                payload: res.data.LabTestFrenchSearch
             })
         }
 
-    } catch(e) {
-        throw new Error(`${e}`); 
+    } catch (e) {
+        throw new Error(`${e}`);
     }
 }
 
 /**
  * labtestsaga fetch all tests
  */
-function* LabTestsFetchAll({path, payload} : AnyAction):any{
+function* LabTestsFetchAll({ path, payload }: AnyAction): any {
     yield tryFetching(
-        path, 
+        path,
         payload,
         LabTestActions.LAB_TESTS_EN_FETCH_ERROR,
         LabTestActions.LAB_TESTS_EN_FETCH_SUCCESS
@@ -101,9 +101,9 @@ function* LabTestsFetchAll({path, payload} : AnyAction):any{
 /**
  * fetch lab test details
  */
-function* LabTestEnFetchDetails({path, payload} : AnyAction){
+function* LabTestEnFetchDetails({ path, payload }: AnyAction) {
     yield tryFetching(
-        path, 
+        path,
         payload,
         LabTestActions.LAB_TESTS_EN_FETCH_DETAILS_ERROR,
         LabTestActions.LAB_TESTS_EN_FETCH_DETAILS_SUCCESS
@@ -113,9 +113,9 @@ function* LabTestEnFetchDetails({path, payload} : AnyAction){
 /**
  * fetch lab test details
  */
-function* LabTestFrFetchDetails({path, payload} : AnyAction){
+function* LabTestFrFetchDetails({ path, payload }: AnyAction) {
     yield tryFetching(
-        path, 
+        path,
         payload,
         LabTestActions.LAB_TESTS_FR_FETCH_DETAILS,
         LabTestActions.LAB_TESTS_FR_FETCH_DETAILS_SUCCESS
@@ -125,9 +125,9 @@ function* LabTestFrFetchDetails({path, payload} : AnyAction){
 /**
  * request test details update
  */
-function* LabTestUpdateDetails({path, payload}: AnyAction){
+function* LabTestUpdateDetails({ path, payload }: AnyAction) {
     yield tryFetching(
-        path, 
+        path,
         payload,
         LabTestActions.LAB_TEST_DETAILS_UPDATE_ERROR,
         LabTestActions.LAB_TEST_DETAILS_UPDATE_SUCCESS
@@ -137,9 +137,9 @@ function* LabTestUpdateDetails({path, payload}: AnyAction){
 /**
  * filter by name saga
  */
-function* LabTestFilterByEnName({path, payload}: AnyAction){
+function* LabTestFilterByEnName({ path, payload }: AnyAction) {
     yield tryFetching(
-        path, 
+        path,
         payload,
         LabTestActions.LAB_TESTS_FILTER_BY_EN_NAME_ERROR,
         LabTestActions.LAB_TESTS_FILTER_BY_EN_NAME_SUCCESS
@@ -148,9 +148,9 @@ function* LabTestFilterByEnName({path, payload}: AnyAction){
 /**
  * filter by name saga
  */
-function* LabTestfetchTwentyTests({path, payload}: AnyAction){
+function* LabTestfetchTwentyTests({ path, payload }: AnyAction) {
     yield tryFetching(
-        path, 
+        path,
         payload,
         LabTestActions.LAB_TESTS_FR_FETCH_TWENTY_ERROR,
         LabTestActions.LAB_TESTS_FR_FETCH_TWENTY_SUCCESS
@@ -159,16 +159,16 @@ function* LabTestfetchTwentyTests({path, payload}: AnyAction){
 /**
  * filter by name saga
  */
-function* LabTestsFrSearchByName({path, payload}: AnyAction){
+function* LabTestsFrSearchByName({ path, payload }: AnyAction) {
     yield tryFetching(
-        path, 
+        path,
         payload,
         LabTestActions.LAB_TESTS_FR_SEARCH_BY_Name_ERROR,
         LabTestActions.LAB_TESTS_FR_SEARCH_BY_Name_SUCCESS
     )
 }
 //watcher func dispatcher
-function* watchLabTest(){
+function* watchLabTest() {
 
     // fetch tests form server 
     yield takeEvery(LabTestActions.LAB_TESTS_FR_FETCH, LabTestFrListFetch)
@@ -180,8 +180,17 @@ function* watchLabTest(){
     yield takeEvery(LabTestActions.LAB_TESTS_FR_FETCH_DETAILS, LabTestFrFetchDetails)
     yield takeEvery(LabTestActions.LAB_TEST_DETAILS_UPDATE, LabTestUpdateDetails)
     yield takeEvery(LabTestActions.LAB_TESTS_FILTER_BY_EN_NAME, LabTestFilterByEnName)
+    // update tarif
+    yield takeEvery(LabTestActions.LAB_TESTS_DETAILS_BY_ID, ({path, payload}: AnyAction) =>
+        tryFetching(
+            path,
+            payload,
+            LabTestActions.LAB_TESTS_DETAILS_BY_ID_ERROR,
+            LabTestActions.LAB_TESTS_DETAILS_BY_ID_SUCCESS,
+        )
+    )
 }
 
-export function* LabTestSaga(){
+export function* LabTestSaga() {
     yield all([fork(watchLabTest)])
 }
