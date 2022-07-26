@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ittyni-prod
+  labels:
+    app: ttProd
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ttProd
+  template:
+    metadata:
+      labels:
+        app: ttProd
+    spec:
+      containers:
+      - name: ittyni
+        image: khmammed/ittyni:tt_prod
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3000
+      imagePullSecrets:
+        - name: regcred
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: tt-prod-service
+  labels:
+    app: ttProd
+spec:
+  ports:
+  - port: 6000
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: ttProd

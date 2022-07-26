@@ -33,7 +33,7 @@ const ListComponent: React.FC<IListComponentProps> = ({ listTitle, data }) => {
                             {/* content of item header description */}
                             <List.ItemContent>
 
-                                <List.ItemContentTitle><TestLink to={`/actes-tarifs/nomenclature-actes-biologie-médicale/${item.abbr}`}>
+                                <List.ItemContentTitle><TestLink to={`/actes-tarifs/nomenclature-actes-biologie-médicale/${item._id}`}>
                                     <h2>{item.title}</h2></TestLink>
                                 </List.ItemContentTitle>
 

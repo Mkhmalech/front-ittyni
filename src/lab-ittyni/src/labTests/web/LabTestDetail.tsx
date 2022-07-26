@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useParams, useLocation } from 'react-router-dom';
 import { Article, Badge } from '../../../../ui-ittyni/src'
-import { Labtests } from '../controller/labtests';
+import { labTestDetailsById, Labtests } from '../controller/labtests';
 import { Ico } from '../../../../react-icons-sc/src/ico';
 import { atom } from '../../icon/atom'
 import { Helmet } from 'react-helmet';
@@ -18,7 +18,7 @@ export const LabTestDetail: React.FC<any> = () => {
     const location = useLocation();
 
     React.useEffect(() => {
-        labtest.labTestFrFetchDetails(test)
+        labTestDetailsById(test)
     }, [])
     return (<>
         {labTestFrDetails && <>

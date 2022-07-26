@@ -24,6 +24,10 @@ export const LabTestReducer = (state=initialState, action : AnyAction) =>{
         case LabTestActions.LAB_TESTS_FR_FETCH_DETAILS_SUCCESS : 
             return { ...state, labTestFrDetails : action.payload.LabTestFrViewByAbbr }
 
+        case LabTestActions.LAB_TESTS_DETAILS_BY_ID_SUCCESS : 
+            console.log(action)
+            return { ...state, labTestFrDetails : action.payload.LabTestFrenchById }
+
         case LabTestActions.LAB_TEST_DETAILS_UPDATE_SUCCESS : 
             return { ...state }
 
