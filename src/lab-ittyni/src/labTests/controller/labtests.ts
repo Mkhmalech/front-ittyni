@@ -4,7 +4,7 @@ import { store } from "../../../../index";
 export const searchLabTests = (q: string) => store.dispatch({
   type: LabTestActions.LAB_TESTS_FR_SEARCH_BY_Name,
   payload: {
-    query: `query{LabTestFrenchSearch(query:"${q}"){id name{fr} reference{Mnemonic}} }`
+    query: `query{LabTestFrenchSearch(query:"${q}"){_id name{fr} reference{Mnemonic}} }`
   },
   path: "tests"
 })
