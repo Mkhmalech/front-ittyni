@@ -33,6 +33,7 @@
     "typesafe-actions": "^4.4.2"
   },
   "devDependencies": {
+    "@types/node": "^18.7.15",
     "@types/react": "16.8.8",
     "@types/react-dom": "16.8.2",
     "@types/react-router-dom": "^5.1.0",
@@ -44,8 +45,9 @@
     "win": "npm run build:win && serve -s build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "build:win" : " set \"GENERATE_SOURCEMAP=false\" && set PORT=3006 && react-scripts build",
-    "build:linux" : "export PORT=6000 && set \"GENERATE_SOURCEMAP=false\" && react-scripts build",
+    "build:win": " set \"GENERATE_SOURCEMAP=false\" && set PORT=3006 && react-scripts build ",
+    "build:linux": "export PORT=6000 && set \"GENERATE_SOURCEMAP=false\" && react-scripts build",
+    "prod:linux": "export NODE_ENV=production&& serve -s build",
     "clean": "rm -rf build"
   },
   "browserslist": [

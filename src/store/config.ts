@@ -1,6 +1,9 @@
 import { call, put } from "redux-saga/effects";
 
-export const api = 'https://api.ittyni.com';
+export const api = process.env.NODE_ENV === 'production' ? 
+    'https://api.ittyni.com' 
+    : 
+    'https://api.ittyni.live';
 // export const api = 'http://localhost:8080';
 // export const api = 'https://api.ittyni.live';
 

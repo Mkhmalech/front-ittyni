@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ittyni-prod
+  name: tt-prod
   labels:
-    app: ttProd
+    app: tt-Prod
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: ttProd
+      app: tt-Prod
   template:
     metadata:
       labels:
-        app: ttProd
+        app: tt-Prod
     spec:
       containers:
       - name: ittyni
@@ -26,13 +26,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: tt-prod-service
+  name: tt-prod
   labels:
-    app: ttProd
+    app: tt-Prod
 spec:
   ports:
   - port: 6000
     protocol: TCP
     targetPort: 3000
   selector:
-    app: ttProd
+    app: tt-Prod
