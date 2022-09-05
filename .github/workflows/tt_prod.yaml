@@ -15,9 +15,9 @@ jobs:
       - name: Install dependencies
         run: npm install
       - name: remove assert node type
-        run: rm node_module/@types/node/assert.d.ts
+        run: rm node_modules/@types/node/assert.d.ts
       - name: move fixed file 
-        run: mv fixes/assert.txt node_module/@types/node/assert.d.ts
+        run: mv fixes/assert.txt node_modules/@types/node/assert.d.ts
       - name: Build Production
         run: npm run build:linux
       - name: Log in to Docker Hub
