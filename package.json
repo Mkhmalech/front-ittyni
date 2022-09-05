@@ -46,7 +46,7 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "build:win": " set \"GENERATE_SOURCEMAP=false\" && set PORT=3006 && react-scripts build ",
-    "build:linux": "export GENERATE_SOURCEMAP=false && react-scripts build",
+    "build:linux": "export GENERATE_SOURCEMAP=false&& react-scripts build",
     "prod:linux": "export NODE_ENV=production&& serve -s build",
     "clean": "rm -rf build"
   },
