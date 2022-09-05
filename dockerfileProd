@@ -5,4 +5,4 @@ COPY ./build ./build
 # install serve module
 RUN npm install -g serve
 # run application
-CMD ["npm", "run", "prod:linux"]
+CMD ["serve", "-s", "build"]
