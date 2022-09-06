@@ -115,7 +115,7 @@ export class Labtests {
     store.dispatch({
       type: LabTestActions.LAB_TESTS_FR_SEARCH,
       payload: {
-        query: `query{LabTestFrenchSearch(query:"${name}"){id name{fr}finance{Bcode}reference{Mnemonic}specimen{nature tubeColor anticoagulant numberoftube volumemin } } }`
+        query: `query{LabTestFrenchSearch(query:"${name}"){_id name{fr}finance{Bcode}reference{Mnemonic}specimen{nature tubeColor anticoagulant numberoftube volumemin } } }`
       },
       path: "tests"
     });
@@ -127,7 +127,7 @@ export class Labtests {
     store.dispatch({
       type: LabTestActions.LAB_TESTS_EN_FETCH_DETAILS,
       payload: {
-        query: `query{LabTestView_en(name:{en : "${name}"}){id name{en fr}reference{CPT code Mnemonic}finance{Bcode}specimen{nature tubeColor anticoagulant numberoftube volumemin}}}`
+        query: `query{LabTestView_en(name:{en : "${name}"}){_id name{en fr}reference{CPT code Mnemonic}finance{Bcode}specimen{nature tubeColor anticoagulant numberoftube volumemin}}}`
       },
       path: "tests"
     });
