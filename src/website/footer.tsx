@@ -1,6 +1,8 @@
 import * as React from 'react';
+import { Ico } from '../react-icons-sc/src/ico';
 import { device } from '../theme';
 import styled from '../theme/styled-components';
+import {whatsapp} from '../assets/icons/whatsapp'
 
 
 export const Footer: React.FunctionComponent<any> = (props) => {
@@ -21,11 +23,10 @@ export const Footer: React.FunctionComponent<any> = (props) => {
           </ul>
         </div>
         <div style={{textAlign:"justify"}}>
-          <h6>Quick Links</h6>
+          <h6>Contact</h6>
           <ul className="footer-links">
-            <li><a href="https://ittyni.com/about/">Qui Somme Nous</a></li>
-            <li><a href="https://ittyni.com/contact/">Contact Us</a></li>
-            <li><a href="https://ittyni.com/faq">FAQ</a></li>
+            <li style={{display: "flex", alignItems:"center"}}><Ico {...whatsapp} width="30" height="30" color='darkgreen'/>
+            <span style={{marginLeft:"5px"}}>+212708239690</span></li>
           </ul>
         </div>
       </FooterSubCategory>

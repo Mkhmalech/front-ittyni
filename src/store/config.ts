@@ -5,7 +5,6 @@ export const api = process.env.NODE_ENV === 'production' ?
     : 
     'https://api.ittyni.live';
 // export const api = 'http://localhost:8080';
-// export const api = 'https://api.ittyni.live';
 
 export async function callApi(method: string, url: string, path: string, data?: any) {
     const res = await fetch(`${url}/${path}`, {
