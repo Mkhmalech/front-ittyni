@@ -56,7 +56,7 @@ export const LabosLisitingByCity: React.FunctionComponent<any> = () => {
               <ui.ItemOptions>
                 <ui.ItemOptionsData>
                   <h3>
-                    <ui.Badge>{labo.contact ? labo.contact.tele.fix[0] : '-'}</ui.Badge>
+                    <ui.Badge>{labo.contact.tele&&labo.contact.tele.fix&&!!labo.contact.tele.fix.length&&labo.contact.tele.fix[0]}</ui.Badge>
                   </h3>
                   <ui.Views><span><i className="far fa-eye"/>{labo.views?labo.views:0}</span></ui.Views>
                 </ui.ItemOptionsData>

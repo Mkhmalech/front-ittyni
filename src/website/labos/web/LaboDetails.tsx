@@ -34,7 +34,7 @@ export const LaboDetails: React.FC<any> = () => {
                             "addressLocality": "${Details.contact.address.city}",
                             "addressCountry": "Maroc"
                         },
-                        "telephone" : "${Details.contact.tele.fix[0]}"
+                        "telephone" : "${Details.contact.tele&&Details.contact.tele.fix&&!!Details.contact.tele.fix.length&&Details.contact.tele.fix[0]}"
                     }`}
                 </script>
                 <meta name="description" content={`Laboratoire d'analyses Medicales ${Details.account.name} a ${Details.contact.address.city}`} />
@@ -65,7 +65,7 @@ export const LaboDetails: React.FC<any> = () => {
                             <ui.Article.HeaderFoot>
                                 <ui.Article.HeaderFootAssurance>
                                     <p>
-                                        tele : <ui.Badge>{Details.contact.tele.fix[0]}</ui.Badge>
+                                        tele : <ui.Badge>{Details.contact.tele&&Details.contact.tele.fix&&!!Details.contact.tele.fix.length&&Details.contact.tele.fix[0]}</ui.Badge>
                                         <ui.Badge bgcolor="green"><i className="far fa-eye" style={{background: "inherit"}}></i> : {Details.views?Details.views:0}</ui.Badge>
                                     </p>
                                 </ui.Article.HeaderFootAssurance>
