@@ -26,10 +26,12 @@ import * as PHARMA from '../website/pharmacies'
 import * as Drug from '../website/medicine'
 import * as Ngap from '../website/ngap'
 import * as Cabinet from '../website/cabinets'
+import { LabTestCartReducer } from '../lab-ittyni/src/labTests/store/reducer'
 
 export interface IttyniState {
     labState: LabState
     // WebStates   : WebState
+    cart: any
     Auth: AuthState
     admin: AdminState
     router: RouterState
@@ -38,6 +40,7 @@ export interface IttyniState {
 export const createRootReducer = (history: History) =>
     combineReducers({
         labState: rootLabReducer,
+        cart: LabTestCartReducer,
         pharma: PHARMA.PharmaReducer,
         cabinet: Cabinet.CabinetReducer,
         medicine : Drug.MedicineReducer,

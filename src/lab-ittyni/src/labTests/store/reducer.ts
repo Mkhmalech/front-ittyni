@@ -1,5 +1,5 @@
 import { AnyAction } from 'redux';
-import { LabTestActions } from './actions';
+import { CartActions, LabTestActions } from './actions';
 const initialState : LabTestState= {
     labtests : [],
     labtestsAll : []
@@ -39,5 +39,18 @@ export const LabTestReducer = (state=initialState, action : AnyAction) =>{
             
         default:
             return { ...state };
+    }
+}
+
+export const LabTestCartReducer = (state={tests: []}, action: any) => {
+    switch (action.type) {
+        case CartActions.ADD_TEST_TO_CART :
+            let isExists = state.tests.some((test:any) => test._id === action.payload._id);
+            let newCart:any;
+            if (!isExists) {
+                newCart = state.tests.concat(action.payload)
+            } else {newCart= state.tests.filter((t:any)=>t._id !== action.payload._id)}
+            return { ...state, tests: newCart };
+        default: return { ...state }
     }
 }
