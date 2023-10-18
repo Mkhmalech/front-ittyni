@@ -6,6 +6,7 @@ import * as ctrl from "../controller/labtests";
 import { IttyniState } from "../../../../store/index";
 import Helmet from "react-helmet";
 import { ReactComponent as SamplePickup } from "../../../../assets/delivery.svg";
+import { Link } from "react-router-dom";
 
 export interface ILabTestsListingProps extends LabTestState {
   dispatch: Dispatch<Action>;
@@ -109,6 +110,7 @@ const LabTestsListing: React.FC<ILabTestsListingProps> = () => {
             flexDirection: "column",
             alignItems: "flex-end",
           }}
+          onClick={()=>window.open(`http://localhost:3000/lab_cart?_id=${cartTests.map((c:any)=>c._id).join("&_id=")}`, "_blank")}
         >
           {/* <span style={{background: "unset"}}><SamplePickup width={40} height={40} style={{background: "unset"}}/></span> */}
           <span style={{ background: "unset" }}>Prélèvement à Domicile</span>
