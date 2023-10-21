@@ -109,6 +109,7 @@ const LabTestsListing: React.FC<ILabTestsListingProps> = () => {
             display: "flex",
             flexDirection: "column",
             alignItems: "flex-end",
+            cursor: "pointer"
           }}
           onClick={()=>window.open(`http://localhost:3000/lab_cart?_id=${cartTests.map((c:any)=>c._id).join("&_id=")}`, "_blank")}
         >
